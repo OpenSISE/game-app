@@ -1,0 +1,46 @@
+@import "settings";
+
+html{
+  -webkit-font-smoothing: antialiased;
+}
+
+i.fa{
+  margin-right: 4px !important;
+}
+
+.header{
+
+  border-bottom: 3px solid $primaryColorDark;
+
+  .logo{
+    background-color: $primaryColor;
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    padding: 12px 34px 12px 34px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+
+    &:hover{
+      background-color: $primaryColorDark;
+    }
+  }
+
+  #toolbar{
+    float: right;
+    margin-right: 22px;
+    .item{
+      padding: 12px;
+      display: inline-block;
+      text-decoration: none;
+      color: $primaryColor;
+      transition: background-color 0.2s;
+      // border-left: 2px solid #F6F5EE;
+    }
+
+    .item:hover{
+      background-color: $primaryColor;
+      color: #fff;
+    }
+  }
+}

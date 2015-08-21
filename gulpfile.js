@@ -8,7 +8,9 @@ var paths = {
   view: ['./view/*.jade']
 }
 
-gulp.task('default', ['webpack'])
+gulp.task('default', function(){
+  gulp.watch(paths.view, ['jade']);
+})
 
 gulp.task('jade', function(){
   gulp.src(paths.view)

@@ -1,0 +1,89 @@
+@import "settings";
+
+p{
+  text-align: center;
+}
+
+#screen{
+  height: 500px;
+  background-image: url(../images/background.png);
+  background-size: cover;
+
+
+  #landing{
+    color: #fff;
+    position: absolute;
+    font-weight: bold;
+    top: 128px;
+    text-align: center;
+    width: 100%;
+
+    .main{
+      font-size: 5em;
+    }
+
+    .sub{
+      font-size: 1.2em;
+    }
+  }
+
+  #live{
+    width: 640px;
+    height: 360px;
+    margin: 0 auto;
+    background-color: #000;
+    position: relative;
+    top: 256px;
+  }
+}
+
+#programs{
+  width: 960px;
+  margin: 0 auto;
+  margin-top: 280px;
+
+  .program{
+
+    margin-bottom: 78px;
+
+    .title{
+
+      .main{
+        display: inline-block;
+        font-size: 1.8em;
+      }
+
+      .sub{
+        display: inline-block;
+        margin-left: 12px;
+        font-size: 1.2em;
+        color: #a6a6a8;
+      }
+    }
+
+    .items{
+      .item{
+        padding: 12px;
+        padding-left: 0;
+        box-sizing: border-box;
+        .video{
+          width: 320px - 24px;
+          height: 180px - 24px;
+          margin-bottom: 8px;
+          background-color: #000;
+        }
+
+        a.name{
+          text-decoration: none;
+          display: block;
+          color: #000;
+          font-size: .9em;
+          transition: color 0.2s;
+          &:hover{
+            color: $primaryColorDark;
+          }
+        }
+      }
+    }
+  }
+}
