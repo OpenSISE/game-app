@@ -1,0 +1,17 @@
+{
+  "name": "game-app",
+  "version": "0.1.0",
+  "description": "SISE Game Frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build"
+  },
+  "author": "Randy Lu <randypriv@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jade": "^1.1.0",
+    "webpack": "^1.11.0"
+  }
+}
