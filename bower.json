@@ -1,0 +1,20 @@
+{
+  "name": "game-app",
+  "version": "0.1.0",
+  "homepage": "https://github.com/OpenSISE/game-app",
+  "authors": [
+    "Randy <randypriv@gmail.com>"
+  ],
+  "description": "SISE Game spa",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "~0.12.10"
+  }
+}
