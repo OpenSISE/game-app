@@ -11,7 +11,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      Vue: './bower_components/vue/dist/vue.min.js'
+      Vue: '../static/bower_components/vue/dist/vue.min.js'
     }
   },
   module: {

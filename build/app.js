@@ -5,9 +5,19 @@ webpackJsonp([0,1],[
 	var Vue = __webpack_require__(1);
 
 	__webpack_require__(2);
-	__webpack_require__(13);
+	__webpack_require__(6);
 	__webpack_require__(8);
 	__webpack_require__(10);
+
+
+	var app = new Vue({
+	  el: '#app',
+	  data: {
+	    programs: []
+	  }
+	})
+
+	module.exports = app;
 
 
 /***/ },
@@ -33,7 +43,12 @@ webpackJsonp([0,1],[
 /* 3 */,
 /* 4 */,
 /* 5 */,
-/* 6 */,
+/* 6 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
 /* 7 */,
 /* 8 */
 /***/ function(module, exports) {
@@ -43,14 +58,6 @@ webpackJsonp([0,1],[
 /***/ },
 /* 9 */,
 /* 10 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 11 */,
-/* 12 */,
-/* 13 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

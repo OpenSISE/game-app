@@ -3,9 +3,9 @@ html
   head
     title SISE Game
     link(rel="stylesheet", type="text/css", href="/build/app.css")
-  body
+  body#app
     .header
-      a(href="/").logo SISE Game
+      a(href="/", v-text="name").logo SISE Game
       
       #toolbar
         a(href="/user/sign").item 登录
@@ -14,8 +14,8 @@ html
     
       section#screen
         #landing
-          .main TGC vs ECG
-          .sub 正在直播：第二届华软杯 - 英雄联盟四强
+          .main(v-text="title") TGC vs ECG
+          .sub(v-text="subTitle") 正在直播：第二届华软杯 - 英雄联盟四强
         #live
       section#programs
         .program
