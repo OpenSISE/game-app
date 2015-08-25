@@ -5,7 +5,7 @@ html
     link(rel="stylesheet", type="text/css", href="/build/app.css")
   body#app
     .header
-      a(href="/", v-text="name").logo SISE Game
+      a(href="/").logo SISE Game
       
       #toolbar
         a(href="/user/sign").item 登录
@@ -17,62 +17,50 @@ html
           .main(v-text="title") TGC vs ECG
           .sub(v-text="subTitle") 正在直播：第二届华软杯 - 英雄联盟四强
         #live
-      section#programs
+      section#programs(v-repeat="programs")
         .program
           .title
-            .main 英雄联盟
-            .sub League of legends
+            .main {{ $key | gameName }}
+            .sub {{ $key | gameSubName }}
           .items.pure-g
-            .pure-u-1-3
+            .pure-u-1-3(v-repeat="$value")
               .item
                 .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-        .program
-          .title
-            .main Dota
-            .sub Defense of the Ancients
-          .items.pure-g
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-        .program
-          .title
-            .main 炉石传说
-            .sub Hearth Stone
-          .items.pure-g
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
-            .pure-u-1-3
-              .item
-                .video
-                a(href="#").name HKE Dinter/跟BEBE雙排
+                a(href="#").name {{ name }}
+        //- .program
+        //-   .title
+        //-     .main Dota
+        //-     .sub Defense of the Ancients
+        //-   .items.pure-g
+        //-     .pure-u-1-3
+        //-       .item
+        //-         .video
+        //-         a(href="#").name HKE Dinter/跟BEBE雙排
+        //-     .pure-u-1-3
+        //-       .item
+        //-         .video
+        //-         a(href="#").name HKE Dinter/跟BEBE雙排
+        //-     .pure-u-1-3
+        //-       .item
+        //-         .video
+        //-         a(href="#").name HKE Dinter/跟BEBE雙排
+        //- .program
+        //-   .title
+        //-     .main 炉石传说
+        //-     .sub Hearth Stone
+        //-   .items.pure-g
+        //-     .pure-u-1-3
+        //-       .item
+        //-         .video
+        //-         a(href="#").name HKE Dinter/跟BEBE雙排
+        //-     .pure-u-1-3
+        //-       .item
+        //-         .video
+        //-         a(href="#").name HKE Dinter/跟BEBE雙排
+        //-     .pure-u-1-3
+        //-       .item
+        //-         .video
+        //-         a(href="#").name HKE Dinter/跟BEBE雙排
 
     .footer Footer
     script(type="application/javascript", src="/build/vendor.js")

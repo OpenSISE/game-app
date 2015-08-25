@@ -9,13 +9,34 @@ webpackJsonp([0,1],[
 	__webpack_require__(8);
 	__webpack_require__(10);
 
-
 	var app = new Vue({
 	  el: '#app',
 	  data: {
+	    title: '', // landing title
+	    subTitle: '', // landing sub title
 	    programs: []
+	  },
+	  filters: {
+	    gameName: __webpack_require__(18).gameName,
+	    gameSubName: __webpack_require__(18).gameSubName
 	  }
 	})
+
+
+	var controller = __webpack_require__(13);
+	// init
+	controller.home.getEvent(function(err,event){
+	  app.title = event.title;
+	  app.subTitle = event.subTitle;
+	});
+
+	controller.home.getPrograms(function(err,programs){
+	  if (err) {
+	    console.log('err')
+	  } else {
+	    app.programs = programs;
+	  }
+	});
 
 	module.exports = app;
 
@@ -61,6 +82,132 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 11 */,
+/* 12 */,
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  home: __webpack_require__(14)
+	}
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var models = __webpack_require__(15)
+	  , Event = models.Event
+	  , User = models.User
+	  , Program = models.Program
+
+	var methods = {
+
+	  getEvent: function(callback){
+	    // get the game events info
+	    Event.getEvent(function(err,event){
+	      callback(null,event);
+	    })
+	  },
+
+	  getPrograms: function(callback){
+	    Program.getPrograms(function(err,programs){
+	      callback(err,programs);
+	    })
+	  }
+	}
+
+	module.exports = methods;
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Event: __webpack_require__(16),
+	  Program: __webpack_require__(17)
+	}
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	var methods = {
+	  getEvent: function(callback){
+	    var event = {
+	      title: 'ECG vs TCG',
+	      subTitle: '华软杯英雄联盟四强'
+	    }
+	    callback(null,event);
+	  }
+	}
+
+	module.exports = methods;
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  getPrograms: function(callback){
+	    var programs = {
+	      lol: [
+	        {
+	          name: 'Randys Room',
+	          description: 'First Room playing LOL',
+	          show: true,
+	          rmtp: 'http://baidu.com'
+	        }
+	      ],
+	      hearthStone: [
+	        {
+	          name: 'Brain Room',
+	          description: 'Fcuk',
+	          show: true,
+	          rmtp: 'htp'
+	        }
+	      ]
+	    }
+	    callback(null,programs);
+	  }
+	}
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var gameNameUtils = __webpack_require__(19);
+
+	exports.gameName = function(gameId){
+	  return gameNameUtils[gameId].name;
+	}
+
+	exports.gameSubName = function(gameId){
+	  return gameNameUtils[gameId].subName;
+	}
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  lol: {
+	    name: '英雄联盟',
+	    subName: 'League of Legends'
+	  },
+	  hearthStone: {
+	    name: '炉石传说',
+	    subName: 'Hearth Stone'
+	  }
+	}
+
 
 /***/ }
 ]);

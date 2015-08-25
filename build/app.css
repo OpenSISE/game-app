@@ -541,7 +541,8 @@ p {
 #screen {
   height: 500px;
   background-image: url(/build/9789f58b171cb70fbfb38392d1f92845.png);
-  background-size: cover; }
+  background-size: cover;
+  margin-bottom: 248px; }
   #screen #landing {
     color: #fff;
     position: absolute;
@@ -563,8 +564,7 @@ p {
 
 #programs {
   width: 960px;
-  margin: 0 auto;
-  margin-top: 280px; }
+  margin: 0 auto; }
   #programs .program {
     margin-bottom: 78px; }
     #programs .program .title .main {
