@@ -6,5 +6,9 @@ module.exports = {
   hearthStone: {
     name: '炉石传说',
     subName: 'Hearth Stone'
+  },
+  unset: {
+    name: '其它',
+    subName: 'Others'
   }
 }

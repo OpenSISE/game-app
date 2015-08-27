@@ -10,7 +10,7 @@ var app = new Vue({
   data: {
     title: '', // landing title
     subTitle: '', // landing sub title
-    programs: []
+    shows: 'fuck'
   },
   filters: {
     gameName: require('./filters/gameName').gameName,
@@ -26,12 +26,39 @@ controller.home.getEvent(function(err,event){
   app.subTitle = event.subTitle;
 });
 
-controller.home.getPrograms(function(err,programs){
+// var shows = {
+//   lol: [
+//     {
+//       "_id": "55deb8faf3e62ccaecef548e",
+//       "room": {
+//         "game": "lol",
+//         "name": "Randy's Room",
+//         "show": true,
+//         "description": ""
+//       }
+//     }
+//   ],
+//   unset: [
+//     {
+//       "_id": "55dedad7761b55dd20bf933b",
+//       "room": {
+//         "name": "djyde520's Room",
+//         "description": "No description",
+//         "game": "unset",
+//         "show": true
+//       }
+//     }
+//   ]
+// }
+// app.shows = shows
+controller.home.getShows(function(err,shows){
   if (err) {
     console.log('err')
   } else {
-    app.programs = programs;
+    app.shows = shows;
   }
 });
+
+
 
 module.exports = app;

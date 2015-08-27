@@ -1,7 +1,7 @@
 var models = require('../models')
   , Event = models.Event
   , User = models.User
-  , Program = models.Program
+  , Show = models.Show
 
 var methods = {
 
@@ -12,9 +12,9 @@ var methods = {
     })
   },
 
-  getPrograms: function(callback){
-    Program.getPrograms(function(err,programs){
-      callback(err,programs);
+  getShows: function(callback){
+    Show.getShows(function(err,shows){
+      callback(err,shows);
     })
   }
 }
