@@ -1,30 +1,45 @@
-var Vue = require('Vue');
+var Vue = require('Vue')
+  , Router = require('../static/bower_components/director/build/director.min.js').Router
+  , router = new Router()
 
-require('../static/bower_components/normalize.css/normalize.css');
-require('../static/bower_components/pure/grids-min.css');
-require('../static/styles/layout.scss');
-require('../static/styles/index.scss');
+var app = new Vue(require('./app.vue'));
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    title: '', // landing title
-    subTitle: '', // landing sub title
-    shows: 'fuck'
-  },
-  filters: {
-    gameName: require('./filters/gameName').gameName,
-    gameSubName: require('./filters/gameName').gameSubName
+router.on('/home', function(){
+  app.view = 'home-view'
+})
+
+router.on('/room/:id', function(id){
+  app.view = 'room-view';
+  app.params.roomId = id;
+})
+
+router.on('/user/:id', function(id){
+  app.view = 'user-view';
+  app.params.userId = id;
+})
+
+router.on('/user/signin', function(){
+  app.view = 'signIn-view';
+})
+
+router.on('/user/signup', function(){
+  app.view = 'signUp-view';
+})
+
+router.configure({
+  notfound: function(){
+    router.setRoute('/home');
   }
 })
 
+router.init('/home');
 
-var controller = require('./controllers');
+// var controller = require('./controllers');
 // init
-controller.home.getEvent(function(err,event){
-  app.title = event.title;
-  app.subTitle = event.subTitle;
-});
+// controller.home.getEvent(function(err,event){
+//   app.title = event.title;
+//   app.subTitle = event.subTitle;
+// });
 
 // var shows = {
 //   lol: [
@@ -51,13 +66,13 @@ controller.home.getEvent(function(err,event){
 //   ]
 // }
 // app.shows = shows
-controller.home.getShows(function(err,shows){
-  if (err) {
-    console.log('err')
-  } else {
-    app.shows = shows;
-  }
-});
+// controller.home.getShows(function(err,shows){
+//   if (err) {
+//     console.log('err')
+//   } else {
+//     app.shows = shows;
+//   }
+// });
 
 
 

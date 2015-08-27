@@ -1,5 +1,6 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
   , webpack = require('webpack')
+  , vue = require('vue-loader')
   , CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      Vue: '../static/bower_components/vue/dist/vue.min.js'
+      Vue: '../static/bower_components/vue/dist/vue.js'
     }
   },
   module: {
@@ -23,6 +24,9 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         loader: 'url?limit=8192'
+      },
+      { test: /\.vue$/,
+        loader: "vue-loader"
       }
     ]
   },
