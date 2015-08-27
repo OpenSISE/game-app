@@ -1,12 +1,13 @@
 <template lang="jade">
   .header
-    a(href="/").logo SISE Game
+    a(href="#/home").logo SISE Game
 
     #toolbar
-      a(href="/user/sign").item 登录
-      a(href="/user/sign").item 注册
+      a(href="#/signin").item 登录
+      a(href="#/signup").item 注册
   .container
-    component(is="{{view}}", params="{{params}}, keep-alive")
+    component(is="{{view}}", params="{{params}}", keep-alive, v-transition="fade",transition-mode="out-in")
+
   .footer
 </template>
 
@@ -29,10 +30,8 @@
       gameSubName: require('./filters/gameName').gameSubName
     },
     components: {
-      'home-view': require('./views/home.vue')
+      'home-view': require('./views/home.vue'),
+      'signin-view': require('./views/signin.vue')
     }
   }
 </script>
-<!--
-<style lang="css!scss">
-</style> -->

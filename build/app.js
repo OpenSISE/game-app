@@ -22,12 +22,12 @@ webpackJsonp([0,1],[
 	  app.params.userId = id;
 	})
 
-	router.on('/user/signin', function(){
-	  app.view = 'signIn-view';
+	router.on('/signin', function(){
+	  app.view = 'signin-view';
 	})
 
-	router.on('/user/signup', function(){
-	  app.view = 'signUp-view';
+	router.on('/signup', function(){
+	  app.view = 'signup-view';
 	})
 
 	router.configure({
@@ -10094,7 +10094,8 @@ webpackJsonp([0,1],[
 	      gameSubName: __webpack_require__(7).gameSubName
 	    },
 	    components: {
-	      'home-view': __webpack_require__(9)
+	      'home-view': __webpack_require__(9),
+	      'signin-view': __webpack_require__(34)
 	    }
 	  }
 
@@ -10160,7 +10161,6 @@ webpackJsonp([0,1],[
 	      var that = this;
 	      var controller = __webpack_require__(24);
 	      controller.home.getShows(function(err,shows){
-	        console.log(shows)
 	        if (err) {
 	          console.log('err')
 	        } else {
@@ -10183,13 +10183,13 @@ webpackJsonp([0,1],[
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<section id=\"screen\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div><p>{{ shows }}</p></section><section id=\"programs\" v-repeat=\"shows\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"javascript:void(0)\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
+	module.exports = "<section id=\"screen\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div></section><section id=\"programs\" v-repeat=\"shows\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"javascript:void(0)\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"header\"><a href=\"/\" class=\"logo\">SISE Game</a><div id=\"toolbar\"><a href=\"/user/sign\" class=\"item\">登录</a><a href=\"/user/sign\" class=\"item\">注册</a></div></div><div class=\"container\"><component is=\"{{view}}\" params=\"{{params}}, keep-alive\"></component></div><div class=\"footer\"></div>";
+	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div></div><div class=\"container\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\"></div>";
 
 /***/ },
 /* 13 */
@@ -11683,6 +11683,45 @@ webpackJsonp([0,1],[
 	  
 	  return curr;
 	};
+
+/***/ },
+/* 33 */,
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(35)
+	module.exports.template = __webpack_require__(36)
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	    data: function(){
+	      return {
+	      }
+	    },
+
+	    compiled: function(){
+
+	    }
+	  }
+	  // var home = function(){
+	  //   return {
+	  //     data: {
+	  //       shows: {}
+	  //     }
+	  //   }
+	  // }
+	  //
+	  // module.exports = home;
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"signin\"><h1>signin</h1></div>";
 
 /***/ }
 ]);

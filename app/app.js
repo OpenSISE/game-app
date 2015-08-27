@@ -18,12 +18,12 @@ router.on('/user/:id', function(id){
   app.params.userId = id;
 })
 
-router.on('/user/signin', function(){
-  app.view = 'signIn-view';
+router.on('/signin', function(){
+  app.view = 'signin-view';
 })
 
-router.on('/user/signup', function(){
-  app.view = 'signUp-view';
+router.on('/signup', function(){
+  app.view = 'signup-view';
 })
 
 router.configure({

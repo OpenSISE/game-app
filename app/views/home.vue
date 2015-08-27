@@ -4,7 +4,6 @@
       .main(v-text="title")
       .sub(v-text="subTitle")
     #live
-    p {{ shows }}
   section#programs(v-repeat="shows")
     .program
       .title
@@ -31,7 +30,6 @@
       var that = this;
       var controller = require('../controllers');
       controller.home.getShows(function(err,shows){
-        console.log(shows)
         if (err) {
           console.log('err')
         } else {

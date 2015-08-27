@@ -505,6 +505,13 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 
 .pure-u-1, .pure-u-1-1, .pure-u-5-5, .pure-u-24-24 {
   width: 100%; }
+.fade-transition {
+  transition: all 0.2s ease; }
+  .fade-transition.fade-enter {
+    opacity: 0; }
+  .fade-transition.fade-leave {
+    opacity: 0; }
+
 html {
   -webkit-font-smoothing: antialiased; }
 
