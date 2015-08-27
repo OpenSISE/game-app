@@ -1,10 +1,13 @@
 <template lang="jade">
   .header
-    a(href="#/home").logo SISE Game
+    a(href="/").logo SISE Game
 
-    #toolbar
+    #toolbar(v-if="!signed")
       a(href="#/signin").item 登录
       a(href="#/signup").item 注册
+    #toolbar(v-if="signed")
+      a(href="#/user/{{user.userId}}").item {{user.username}}
+      a(href="#/signout").item 退出
   .container
     component(is="{{view}}", params="{{params}}", keep-alive, v-transition="fade",transition-mode="out-in")
 
@@ -23,7 +26,18 @@
       view: '',
       title: '', // landing title
       subTitle: '', // landing sub title
-      shows: {}
+      shows: {},
+      signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
+      user: {
+        userId: '',
+        username: ''
+      }
+    },
+    compiled: function(){
+      if(this.signed){
+        this.user.userId = JSON.parse(localStorage.getItem('user')).id;
+        this.user.username = JSON.parse(localStorage.getItem('user')).username;
+      }
     },
     filters: {
       gameName: require('./filters/gameName').gameName,

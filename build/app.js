@@ -30,6 +30,16 @@ webpackJsonp([0,1],[
 	  app.view = 'signup-view';
 	})
 
+	router.on('/signout', function(){
+	  if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
+	    localStorage.removeItem('token');
+	    localStorage.removeItem('user');
+	    location.href = '/';
+	  } else {
+	    location.href = '/';
+	  }
+	})
+
 	router.configure({
 	  notfound: function(){
 	    router.setRoute('/home');
@@ -37,48 +47,6 @@ webpackJsonp([0,1],[
 	})
 
 	router.init('/home');
-
-	// var controller = require('./controllers');
-	// init
-	// controller.home.getEvent(function(err,event){
-	//   app.title = event.title;
-	//   app.subTitle = event.subTitle;
-	// });
-
-	// var shows = {
-	//   lol: [
-	//     {
-	//       "_id": "55deb8faf3e62ccaecef548e",
-	//       "room": {
-	//         "game": "lol",
-	//         "name": "Randy's Room",
-	//         "show": true,
-	//         "description": ""
-	//       }
-	//     }
-	//   ],
-	//   unset: [
-	//     {
-	//       "_id": "55dedad7761b55dd20bf933b",
-	//       "room": {
-	//         "name": "djyde520's Room",
-	//         "description": "No description",
-	//         "game": "unset",
-	//         "show": true
-	//       }
-	//     }
-	//   ]
-	// }
-	// app.shows = shows
-	// controller.home.getShows(function(err,shows){
-	//   if (err) {
-	//     console.log('err')
-	//   } else {
-	//     app.shows = shows;
-	//   }
-	// });
-
-
 
 	module.exports = app;
 
@@ -10087,7 +10055,18 @@ webpackJsonp([0,1],[
 	      view: '',
 	      title: '', // landing title
 	      subTitle: '', // landing sub title
-	      shows: {}
+	      shows: {},
+	      signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
+	      user: {
+	        userId: '',
+	        username: ''
+	      }
+	    },
+	    compiled: function(){
+	      if(this.signed){
+	        this.user.userId = JSON.parse(localStorage.getItem('user')).id;
+	        this.user.username = JSON.parse(localStorage.getItem('user')).username;
+	      }
 	    },
 	    filters: {
 	      gameName: __webpack_require__(7).gameName,
@@ -10148,7 +10127,8 @@ webpackJsonp([0,1],[
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
+	var Show = __webpack_require__(26).Show;
+	  module.exports = {
 	    data: function(){
 	      return {
 	        title: 'TGC vs ECG',
@@ -10159,8 +10139,7 @@ webpackJsonp([0,1],[
 
 	    compiled: function(){
 	      var that = this;
-	      var controller = __webpack_require__(24);
-	      controller.home.getShows(function(err,shows){
+	      Show.getShows(function(err,shows){
 	        if (err) {
 	          console.log('err')
 	        } else {
@@ -10189,7 +10168,7 @@ webpackJsonp([0,1],[
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div></div><div class=\"container\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\"></div>";
+	module.exports = "<div class=\"header\"><a href=\"/\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user/{{user.userId}}\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"container\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\"></div>";
 
 /***/ },
 /* 13 */
@@ -10223,49 +10202,15 @@ webpackJsonp([0,1],[
 /***/ },
 /* 22 */,
 /* 23 */,
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  home: __webpack_require__(25)
-	}
-
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var models = __webpack_require__(26)
-	  , Event = models.Event
-	  , User = models.User
-	  , Show = models.Show
-
-	var methods = {
-
-	  getEvent: function(callback){
-	    // get the game events info
-	    Event.getEvent(function(err,event){
-	      callback(null,event);
-	    })
-	  },
-
-	  getShows: function(callback){
-	    Show.getShows(function(err,shows){
-	      callback(err,shows);
-	    })
-	  }
-	}
-
-	module.exports = methods;
-
-
-/***/ },
+/* 24 */,
+/* 25 */,
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
 	  Event: __webpack_require__(27),
-	  Show: __webpack_require__(28)
+	  Show: __webpack_require__(28),
+	  User: __webpack_require__(37)
 	}
 
 
@@ -10296,25 +10241,6 @@ webpackJsonp([0,1],[
 
 	module.exports = {
 	  getShows: function(callback){
-	    // var programs = {
-	    //   lol: [
-	    //     {
-	    //       name: 'Randys Room',
-	    //       description: 'First Room playing LOL',
-	    //       show: true,
-	    //       rmtp: 'http://baidu.com'
-	    //     }
-	    //   ],
-	    //   hearthStone: [
-	    //     {
-	    //       name: 'Brain Room',
-	    //       description: 'Fcuk',
-	    //       show: true,
-	    //       rmtp: 'htp'
-	    //     }
-	    //   ]
-	    // }
-	    // callback(null,programs);
 	    request
 	      .get(END_POINT + '/show')
 	      .end(function(err, response){
@@ -11695,33 +11621,63 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 35 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
+	var User = __webpack_require__(26).User;
+	  module.exports = {
 	    data: function(){
 	      return {
+	        username: '',
+	        password: ''
 	      }
 	    },
-
-	    compiled: function(){
-
+	    methods: {
+	      signIn: function(){
+	        User.signIn(this.username, this.password, function(err,res){
+	          if (res.ok) {
+	            if (res.body.code === '400') {
+	              alert('Invalid username or password')
+	            } else if(res.body.code === '200'){
+	              localStorage.setItem('token', res.body.token);
+	              localStorage.setItem('user', JSON.stringify(res.body.user));
+	              location.href = '/';
+	            }
+	          } else {
+	            alert('something wrong');
+	          }
+	        })
+	      }
 	    }
 	  }
-	  // var home = function(){
-	  //   return {
-	  //     data: {
-	  //       shows: {}
-	  //     }
-	  //   }
-	  // }
-	  //
-	  // module.exports = home;
 
 /***/ },
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"signin\"><h1>signin</h1></div>";
+	module.exports = "<div id=\"signin\"><input type=\"text\" placeholder=\"username\" v-model=\"username\"/><input type=\"password\" placeholder=\"password\" v-model=\"password\"/><a href=\"javascript:void(0)\" v-on=\"click: signIn()\">SignIn</a></div>";
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var config = __webpack_require__(29)
+	  , request = __webpack_require__(30)
+	  , END_POINT = config.api.END_POINT
+
+	module.exports = {
+	  signIn: function(username,password,callback){
+	    request
+	      .post(END_POINT + '/user/signin')
+	      .send({
+	        username: username,
+	        password: password
+	      })
+	      .end(function(err,res){
+	        callback(err,res);
+	      })
+	  }
+	}
+
 
 /***/ }
 ]);

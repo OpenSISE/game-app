@@ -17,6 +17,7 @@
 </template>
 
 <script>
+  var Show = require('../models').Show;
   module.exports = {
     data: function(){
       return {
@@ -28,8 +29,7 @@
 
     compiled: function(){
       var that = this;
-      var controller = require('../controllers');
-      controller.home.getShows(function(err,shows){
+      Show.getShows(function(err,shows){
         if (err) {
           console.log('err')
         } else {

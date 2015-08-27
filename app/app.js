@@ -26,6 +26,16 @@ router.on('/signup', function(){
   app.view = 'signup-view';
 })
 
+router.on('/signout', function(){
+  if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    location.href = '/';
+  } else {
+    location.href = '/';
+  }
+})
+
 router.configure({
   notfound: function(){
     router.setRoute('/home');
@@ -33,47 +43,5 @@ router.configure({
 })
 
 router.init('/home');
-
-// var controller = require('./controllers');
-// init
-// controller.home.getEvent(function(err,event){
-//   app.title = event.title;
-//   app.subTitle = event.subTitle;
-// });
-
-// var shows = {
-//   lol: [
-//     {
-//       "_id": "55deb8faf3e62ccaecef548e",
-//       "room": {
-//         "game": "lol",
-//         "name": "Randy's Room",
-//         "show": true,
-//         "description": ""
-//       }
-//     }
-//   ],
-//   unset: [
-//     {
-//       "_id": "55dedad7761b55dd20bf933b",
-//       "room": {
-//         "name": "djyde520's Room",
-//         "description": "No description",
-//         "game": "unset",
-//         "show": true
-//       }
-//     }
-//   ]
-// }
-// app.shows = shows
-// controller.home.getShows(function(err,shows){
-//   if (err) {
-//     console.log('err')
-//   } else {
-//     app.shows = shows;
-//   }
-// });
-
-
 
 module.exports = app;
