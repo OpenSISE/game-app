@@ -20,12 +20,12 @@
     compiled: function(){
       var app = this;
       User.getUserInfo(app.params.username, function(err,res){
-        if (res.body.code === '200') {
-          app.room.name = res.body.room.name;
-          app.room.description = res.body.room.description;
-          app.room.rtmp = res.body.room.rtmp;
+        if (err) {
+          alert(err.message);
         } else {
-          alert('Error: ' + res.body.message);
+          app.room.name = res.room.name;
+          app.room.description = res.room.description;
+          app.room.rtmp = res.room.rtmp;
         }
       })
     }

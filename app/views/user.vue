@@ -8,7 +8,7 @@
     input#show(type="checkbox", v-model="user.room.show")
     label(for="show") 显示到首页
     a(href="javascript:void(0)", v-on="click: userUpdate()") 更新
-  #user(v-if="!signed")
+  #user(v-if="!signed || params.username !== ''")
     //- 别人的资料
     p(v-text="user.username")
     p(v-text="user.room.name")
@@ -56,16 +56,11 @@
         // 查看自己的资料
         if (app.signed) {
           User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
-            if (err || !res.ok) {
-              alert('Something wrong');
+            if (err) {
+              alert(err.message);
             } else {
-              if (res.body.code === '200') {
-                app.user.username = res.body.username;
-                app.user.room = res.body.room;
-              } else {
-                // TODO 404
-                alert('Invalid user');
-              }
+              app.user.username = res.username;
+              app.user.room = res.room;
             }
           })
         } else {
@@ -74,16 +69,11 @@
       } else {
         // 查看它人资料
         User.getUserInfo(app.params.username, function(err,res){
-          if (err || !res.ok) {
-            alert('Something wrong');
+          if (err) {
+            alert(err.message);
           } else {
-            if (res.body.code === '200') {
-              app.user.username = res.body.username;
-              app.user.room = res.body.room;
-            } else {
-              // TODO 404
-              alert('Invalid user');
-            }
+            app.user.username = res.username;
+            app.user.room = res.room;
           }
         })
       }
@@ -97,11 +87,10 @@
           show: app.user.room.show,
           game: app.user.room.game
         }, function(err,res){
-          if (res.body.code === '200') {
-            alert('update success')
+          if (err) {
+            alert(err.message);
           } else {
-            alert('error');
-            console.log(res.body);
+            alert('修改成功');
           }
         })
       }

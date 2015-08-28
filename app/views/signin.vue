@@ -17,16 +17,12 @@
     methods: {
       signIn: function(){
         User.signIn(this.username, this.password, function(err,res){
-          if (res.ok) {
-            if (res.body.code === '400') {
-              alert('Invalid username or password')
-            } else if(res.body.code === '200'){
-              localStorage.setItem('token', res.body.token);
-              localStorage.setItem('user', JSON.stringify(res.body.user));
-              location.href = '/';
-            }
+          if (err) {
+            alert(err.message);
           } else {
-            alert('something wrong');
+            localStorage.setItem('token',res.token);
+            localStorage.setItem('user', JSON.stringify(res.user));
+            location.href = '/';
           }
         })
       }

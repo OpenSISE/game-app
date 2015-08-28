@@ -11628,7 +11628,22 @@ webpackJsonp([0,1],[
 	        password: password
 	      })
 	      .end(function(err,res){
-	        callback(err,res);
+	        if (err) {
+	          callback({
+	            message: '网络错误'
+	          })
+	        } else {
+	          switch (res.body.code) {
+	            case '200':
+	              callback(null,res.body)
+	              break;
+	            case '400':
+	              callback({
+	                message: '用户名或密码错误'
+	              })
+	              break;
+	          }
+	        }
 	      })
 	  },
 	  signUp: function(username,password, callback){
@@ -11639,14 +11654,47 @@ webpackJsonp([0,1],[
 	        password: password
 	      })
 	      .end(function(err,res){
-	        callback(err,res);
+	        if (err) {
+	          callback({
+	            message: '网络错误'
+	          })
+	        } else {
+	          var error;
+	          switch (res.body.code) {
+	            case 11000:
+	              error = {
+	                code: 11000,
+	                message: '用户名已被占用'
+	              }
+	              break;
+	            case '200':
+	              error = null;
+	              break;
+	          }
+	          callback(error,res.body);
+	        }
 	      })
 	  },
 	  getUserInfo: function(username, callback){
 	    request
 	      .get(END_POINT + '/user/' + username)
 	      .end(function(err,res){
-	        callback(err,res);
+	        if (err) {
+	          callback({
+	            message: '网络错误'
+	          })
+	        } else {
+	          switch (res.body.code) {
+	            case '200':
+	              callback(null,res.body);
+	              break;
+	            case '400':
+	              callback({
+	                message: '找不到用户'
+	              })
+	              break;
+	          }
+	        }
 	      })
 	  },
 	  update: function(username, room, callback){
@@ -11656,7 +11704,22 @@ webpackJsonp([0,1],[
 	      .put(END_POINT + '/user/' + username)
 	      .send(room)
 	      .end(function(err,res){
-	        callback(err,res);
+	        if (err) {
+	          callback({
+	            message: '网络错误'
+	          })
+	        } else {
+	          switch (res.body.code) {
+	            case '200':
+	              callback(null,res.body);
+	              break;
+	            case '401':
+	              localStorage.removeItem('token');
+	              localStorage.removeItem('user');
+	              location.href = '/';
+	              break;
+	          }
+	        }
 	      })
 	  }
 	}
@@ -11691,16 +11754,12 @@ webpackJsonp([0,1],[
 	    methods: {
 	      signIn: function(){
 	        User.signIn(this.username, this.password, function(err,res){
-	          if (res.ok) {
-	            if (res.body.code === '400') {
-	              alert('Invalid username or password')
-	            } else if(res.body.code === '200'){
-	              localStorage.setItem('token', res.body.token);
-	              localStorage.setItem('user', JSON.stringify(res.body.user));
-	              location.href = '/';
-	            }
+	          if (err) {
+	            alert(err.message);
 	          } else {
-	            alert('something wrong');
+	            localStorage.setItem('token',res.token);
+	            localStorage.setItem('user', JSON.stringify(res.user));
+	            location.href = '/';
 	          }
 	        })
 	      }
@@ -11741,16 +11800,12 @@ webpackJsonp([0,1],[
 	        app.valid = this.username !== '' && this.comfirmPassword !== '' && this.password !== '' && this.comfirmPassword === this.password;
 	        if (app.valid) {
 	          User.signUp(app.username, app.password, function(err,res){
-	            if (res.ok) {
-	              if (res.body.code === '400') {
-	                alert('Invalid username or password')
-	              } else if(res.body.code === '200'){
-	                localStorage.setItem('token', res.body.token);
-	                localStorage.setItem('user', JSON.stringify(res.body.user));
-	                location.href = '/';
-	              }
+	            if (err) {
+	              alert(err.message);
 	            } else {
-	              alert('something wrong');
+	              localStorage.setItem('token',res.token);
+	              localStorage.setItem('user', JSON.stringify(res.user));
+	              location.href = '/';
 	            }
 	          })
 	        } else {
@@ -11819,16 +11874,11 @@ webpackJsonp([0,1],[
 	        // 查看自己的资料
 	        if (app.signed) {
 	          User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
-	            if (err || !res.ok) {
-	              alert('Something wrong');
+	            if (err) {
+	              alert(err.message);
 	            } else {
-	              if (res.body.code === '200') {
-	                app.user.username = res.body.username;
-	                app.user.room = res.body.room;
-	              } else {
-	                // TODO 404
-	                alert('Invalid user');
-	              }
+	              app.user.username = res.username;
+	              app.user.room = res.room;
 	            }
 	          })
 	        } else {
@@ -11837,16 +11887,11 @@ webpackJsonp([0,1],[
 	      } else {
 	        // 查看它人资料
 	        User.getUserInfo(app.params.username, function(err,res){
-	          if (err || !res.ok) {
-	            alert('Something wrong');
+	          if (err) {
+	            alert(err.message);
 	          } else {
-	            if (res.body.code === '200') {
-	              app.user.username = res.body.username;
-	              app.user.room = res.body.room;
-	            } else {
-	              // TODO 404
-	              alert('Invalid user');
-	            }
+	            app.user.username = res.username;
+	            app.user.room = res.room;
 	          }
 	        })
 	      }
@@ -11860,11 +11905,10 @@ webpackJsonp([0,1],[
 	          show: app.user.room.show,
 	          game: app.user.room.game
 	        }, function(err,res){
-	          if (res.body.code === '200') {
-	            alert('update success')
+	          if (err) {
+	            alert(err.message);
 	          } else {
-	            alert('error');
-	            console.log(res.body);
+	            alert('修改成功');
 	          }
 	        })
 	      }
@@ -11875,7 +11919,7 @@ webpackJsonp([0,1],[
 /* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; params.username===''\"><p v-text=\"user.username\"></p><input v-model=\"user.room.name\"/><input v-model=\"user.room.description\"/><select v-model=\"user.room.game\" options=\"games\"></select><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><label for=\"show\">显示到首页</label><a href=\"javascript:void(0)\" v-on=\"click: userUpdate()\">更新</a></div><div id=\"user\" v-if=\"!signed\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
+	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; params.username===''\"><p v-text=\"user.username\"></p><input v-model=\"user.room.name\"/><input v-model=\"user.room.description\"/><select v-model=\"user.room.game\" options=\"games\"></select><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><label for=\"show\">显示到首页</label><a href=\"javascript:void(0)\" v-on=\"click: userUpdate()\">更新</a></div><div id=\"user\" v-if=\"!signed || params.username !== ''\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
 
 /***/ },
 /* 44 */
@@ -11905,12 +11949,12 @@ webpackJsonp([0,1],[
 	    compiled: function(){
 	      var app = this;
 	      User.getUserInfo(app.params.username, function(err,res){
-	        if (res.body.code === '200') {
-	          app.room.name = res.body.room.name;
-	          app.room.description = res.body.room.description;
-	          app.room.rtmp = res.body.room.rtmp;
+	        if (err) {
+	          alert(err.message);
 	        } else {
-	          alert('Error: ' + res.body.message);
+	          app.room.name = res.room.name;
+	          app.room.description = res.room.description;
+	          app.room.rtmp = res.room.rtmp;
 	        }
 	      })
 	    }
