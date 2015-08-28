@@ -14,6 +14,17 @@ module.exports = {
         callback(err,res);
       })
   },
+  signUp: function(username,password, callback){
+    request
+      .post(END_POINT + '/user/signup')
+      .send({
+        username: username,
+        password: password
+      })
+      .end(function(err,res){
+        callback(err,res);
+      })
+  },
   getUserInfo: function(username, callback){
     request
       .get(END_POINT + '/user/' + username)

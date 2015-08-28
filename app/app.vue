@@ -45,6 +45,7 @@
     components: {
       'home-view': require('./views/home.vue'),
       'signin-view': require('./views/signin.vue'),
+      'signup-view': require('./views/signup.vue'),
       'user-view': require('./views/user.vue'),
       'room-view': require('./views/room.vue')
     }
