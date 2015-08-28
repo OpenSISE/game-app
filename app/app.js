@@ -8,9 +8,9 @@ router.on('/home', function(){
   app.view = 'home-view'
 })
 
-router.on('/room/:id', function(id){
+router.on('/room/:username', function(username){
   app.view = 'room-view';
-  app.params.roomId = id;
+  app.params.username = username;
 })
 
 router.on('/user', function(){
