@@ -10046,7 +10046,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(10)
-	module.exports.template = __webpack_require__(47)
+	module.exports.template = __webpack_require__(52)
 
 
 /***/ },
@@ -10077,15 +10077,15 @@ webpackJsonp([0,1],[
 	      }
 	    },
 	    filters: {
-	      gameName: __webpack_require__(22).gameName,
-	      gameSubName: __webpack_require__(22).gameSubName
+	      gameName: __webpack_require__(23).gameName,
+	      gameSubName: __webpack_require__(23).gameSubName
 	    },
 	    components: {
-	      'home-view': __webpack_require__(24),
-	      'signin-view': __webpack_require__(35),
-	      'signup-view': __webpack_require__(38),
-	      'user-view': __webpack_require__(41),
-	      'room-view': __webpack_require__(44)
+	      'home-view': __webpack_require__(25),
+	      'signin-view': __webpack_require__(36),
+	      'signup-view': __webpack_require__(41),
+	      'user-view': __webpack_require__(44),
+	      'room-view': __webpack_require__(49)
 	    }
 	  }
 
@@ -10097,8 +10097,287 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 12 */,
-/* 13 */,
-/* 14 */,
+/* 13 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0;
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function createStyleElement() {
+		var styleElement = document.createElement("style");
+		var head = getHeadElement();
+		styleElement.type = "text/css";
+		head.appendChild(styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement() {
+		var linkElement = document.createElement("link");
+		var head = getHeadElement();
+		linkElement.rel = "stylesheet";
+		head.appendChild(linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement());
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement();
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				styleElement.parentNode.removeChild(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement();
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				styleElement.parentNode.removeChild(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
 /* 15 */
 /***/ function(module, exports) {
 
@@ -10121,10 +10400,11 @@ webpackJsonp([0,1],[
 /***/ },
 /* 20 */,
 /* 21 */,
-/* 22 */
+/* 22 */,
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var gameNameUtils = __webpack_require__(23);
+	var gameNameUtils = __webpack_require__(24);
 
 	exports.gameName = function(gameId){
 	  if(gameId) return gameNameUtils[gameId].name;
@@ -10138,7 +10418,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -10162,18 +10442,18 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(25)
-	module.exports.template = __webpack_require__(34)
-
-
-/***/ },
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Show = __webpack_require__(26).Show;
+	module.exports = __webpack_require__(26)
+	module.exports.template = __webpack_require__(35)
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Show = __webpack_require__(27).Show;
 	  module.exports = {
 	    data: function(){
 	      return {
@@ -10199,18 +10479,18 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Event: __webpack_require__(27),
-	  Show: __webpack_require__(28),
-	  User: __webpack_require__(33)
+	  Event: __webpack_require__(28),
+	  Show: __webpack_require__(29),
+	  User: __webpack_require__(34)
 	}
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	var methods = {
@@ -10227,11 +10507,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(29)
-	  , request = __webpack_require__(30)
+	var config = __webpack_require__(30)
+	  , request = __webpack_require__(31)
 	  , END_POINT = config.api.END_POINT
 
 	module.exports = {
@@ -10250,7 +10530,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	var config = {
@@ -10263,15 +10543,15 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Emitter = __webpack_require__(31);
-	var reduce = __webpack_require__(32);
+	var Emitter = __webpack_require__(32);
+	var reduce = __webpack_require__(33);
 
 	/**
 	 * Root reference for iframes.
@@ -11407,7 +11687,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	
@@ -11577,7 +11857,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	
@@ -11606,11 +11886,11 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(29)
-	  , request = __webpack_require__(30)
+	var config = __webpack_require__(30)
+	  , request = __webpack_require__(31)
 	  , END_POINT = config.api.END_POINT
 
 	module.exports = {
@@ -11720,24 +12000,26 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(36)
-	module.exports.template = __webpack_require__(37)
-
-
-/***/ },
 /* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var User = __webpack_require__(26).User;
+	module.exports = __webpack_require__(37)
+	module.exports.template = __webpack_require__(40)
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(38);
+	  
+	  var User = __webpack_require__(27).User;
 	  module.exports = {
 	    data: function(){
 	      return {
@@ -11761,24 +12043,31 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 37 */
+/* 38 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 39 */,
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"signin\"><input type=\"text\" placeholder=\"username\" v-model=\"username\"/><input type=\"password\" placeholder=\"password\" v-model=\"password\"/><a href=\"javascript:void(0)\" v-on=\"click: signIn()\">SignIn</a></div>";
 
 /***/ },
-/* 38 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(39)
-	module.exports.template = __webpack_require__(40)
+	module.exports = __webpack_require__(42)
+	module.exports.template = __webpack_require__(43)
 
 
 /***/ },
-/* 39 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var User = __webpack_require__(26).User;
+	var User = __webpack_require__(27).User;
 	  module.exports = {
 	    data: function(){
 	      return {
@@ -11810,24 +12099,67 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 40 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"signin\"><input type=\"text\" placeholder=\"username\" v-model=\"username\"/><input type=\"password\" placeholder=\"password\" v-model=\"password\"/><input type=\"password\" placeholder=\"comfirmPassword\" v-model=\"comfirmPassword\"/><a href=\"javascript:void(0)\" v-on=\"click: signUp()\">Signup</a></div>";
 
 /***/ },
-/* 41 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(42)
-	module.exports.template = __webpack_require__(43)
+	__webpack_require__(45)
+	module.exports = __webpack_require__(47)
+	module.exports.template = __webpack_require__(48)
 
 
 /***/ },
-/* 42 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var User = __webpack_require__(26).User;
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(46);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(14)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./user.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./user.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(13)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "#user {\n  width: 400px;\n  margin: 0 auto;\n  margin-top: 64px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(38);
+
+	  var User = __webpack_require__(27).User;
 	  module.exports = {
 	    props: ['params'],
 	    data: function(){
@@ -11910,24 +12242,24 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 43 */
+/* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; params.username===''\"><p v-text=\"user.username\"></p><input v-model=\"user.room.name\"/><input v-model=\"user.room.description\"/><select v-model=\"user.room.game\" options=\"games\"></select><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><label for=\"show\">显示到首页</label><a href=\"javascript:void(0)\" v-on=\"click: userUpdate()\">更新</a></div><div id=\"user\" v-if=\"!signed || params.username !== ''\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
+	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; params.username===''\"><h4>Hola, {{user.username}} :)</h4><form><div class=\"row\"><div class=\"six columns\"><label for=\"room-name\">直播名称</label><input id=\"room-name\" v-model=\"user.room.name\" type=\"text\" class=\"u-full-width\"/></div><div class=\"six columns\"><label for=\"games\">直播类别</label><select id=\"games\" v-model=\"user.room.game\" options=\"games\" class=\"u-full-width\"></select></div><label for=\"room-description\">直播简介</label><textarea id=\"room-description\" v-model=\"user.room.description\" class=\"u-full-width\"></textarea><label><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><span class=\"label-body\">在首页显示房间</span></label></div></form><input href=\"javascript:void(0)\" v-on=\"click: userUpdate()\" type=\"submit\" value=\"更新\" class=\"button-primary\"/></div><div id=\"user\" v-if=\"!signed || params.username !== ''\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
 
 /***/ },
-/* 44 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(45)
-	module.exports.template = __webpack_require__(46)
+	module.exports = __webpack_require__(50)
+	module.exports.template = __webpack_require__(51)
 
 
 /***/ },
-/* 45 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var User = __webpack_require__(26).User;
+	var User = __webpack_require__(27).User;
 	  module.exports = {
 	    props: ['params'],
 
@@ -11955,16 +12287,16 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 46 */
+/* 51 */
 /***/ function(module, exports) {
 
 	module.exports = "<p>{{room.name}}<p>{{room.description}}</p></p>";
 
 /***/ },
-/* 47 */
+/* 52 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"header\"><a href=\"/\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"container\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\"></div>";
+	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"view\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\"></div>";
 
 /***/ }
 ]);

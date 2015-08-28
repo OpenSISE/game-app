@@ -1,6 +1,6 @@
 <template lang="jade">
   .header
-    a(href="/").logo SISE Game
+    a(href="#/home").logo SISE Game
 
     #toolbar(v-if="!signed")
       a(href="#/signin").item 登录
@@ -8,7 +8,7 @@
     #toolbar(v-if="signed")
       a(href="#/user").item {{user.username}}
       a(href="#/signout").item 退出
-  .container
+  .view
     component(is="{{view}}", params="{{params}}", keep-alive, v-transition="fade",transition-mode="out-in")
 
   .footer

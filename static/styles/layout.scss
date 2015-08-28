@@ -8,6 +8,11 @@ i.fa{
   margin-right: 4px !important;
 }
 
+input.button-primary{
+  background-color: $primaryColor !important;
+  border-color: $primaryColor !important;
+}
+
 .header{
 
   border-bottom: 3px solid $primaryColorDark;

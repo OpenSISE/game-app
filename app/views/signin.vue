@@ -6,6 +6,8 @@
 </template>
 
 <script>
+  require('../../static/bower_components/skeleton/css/skeleton.css');
+  
   var User = require('../models').User;
   module.exports = {
     data: function(){
