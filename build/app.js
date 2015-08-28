@@ -10184,25 +10184,15 @@ webpackJsonp([0,1],[
 	    },
 
 	    compiled: function(){
-	      var that = this;
 	      Show.getShows(function(err,shows){
 	        if (err) {
 	          console.log('err')
 	        } else {
-	          that.shows = shows;
+	          this.shows = shows;
 	        }
-	      });
+	      }.bind(this));
 	    }
 	  }
-	  // var home = function(){
-	  //   return {
-	  //     data: {
-	  //       shows: {}
-	  //     }
-	  //   }
-	  // }
-	  //
-	  // module.exports = home;
 
 /***/ },
 /* 26 */
@@ -11729,7 +11719,7 @@ webpackJsonp([0,1],[
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<section id=\"screen\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div></section><section id=\"programs\" v-repeat=\"shows\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"javascript:void(0)\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
+	module.exports = "<section id=\"screen\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div></section><section id=\"programs\" v-repeat=\"shows\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
 /* 35 */

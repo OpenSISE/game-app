@@ -13,7 +13,7 @@
         .pure-u-1-3(v-repeat="$value")
           .item
             .video
-            a(href="javascript:void(0)", v-text="room.name").name
+            a(href="#/room/{{ username }}", v-text="room.name").name
 </template>
 
 <script>
@@ -28,23 +28,13 @@
     },
 
     compiled: function(){
-      var that = this;
       Show.getShows(function(err,shows){
         if (err) {
           console.log('err')
         } else {
-          that.shows = shows;
+          this.shows = shows;
         }
-      });
+      }.bind(this));
     }
   }
-  // var home = function(){
-  //   return {
-  //     data: {
-  //       shows: {}
-  //     }
-  //   }
-  // }
-  //
-  // module.exports = home;
 </script>
