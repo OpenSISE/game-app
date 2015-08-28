@@ -13,6 +13,12 @@ input.button-primary{
   border-color: $primaryColor !important;
 }
 
+.form{
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 64px;
+}
+
 .header{
 
   border-bottom: 3px solid $primaryColorDark;

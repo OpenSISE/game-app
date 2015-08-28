@@ -531,6 +531,11 @@ input.button-primary {
   background-color: #31B298 !important;
   border-color: #31B298 !important; }
 
+.form {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 64px; }
+
 .header {
   border-bottom: 3px solid #26977F; }
   .header .logo {

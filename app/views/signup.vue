@@ -1,9 +1,14 @@
 <template lang="jade">
-  #signin
-    input(type="text", placeholder="username", v-model="username")
-    input(type="password", placeholder="password", v-model="password")
-    input(type="password", placeholder="comfirmPassword", v-model="comfirmPassword")
-    a(href="javascript:void(0)", v-on="click: signUp()") Signup
+  #signin.form
+    h4 加入 SISE Game
+    .row
+      label(for="username") 用户名
+      input.u-full-width#username(type="text", placeholder="用以显示和登录", v-model="username")
+      label(for="password") 密码
+      input.u-full-width#password(type="password", v-model="password")
+      label(for="comfirm-password") 确认密码
+      input.u-full-width#comfirm-password(type="password", v-model="comfirmPassword")
+      input.button-primary.u-full-width.button-primary(type="button", href="javascript:void(0)", v-on="click: signUp()", value="加入")
 </template>
 
 <script>

@@ -1,13 +1,18 @@
 <template lang="jade">
-  #signin
-    input(type="text", placeholder="username", v-model="username")
-    input(type="password", placeholder="password", v-model="password")
-    a(href="javascript:void(0)", v-on="click: signIn()") SignIn
+  #signin.form
+    //- form
+    h4 登录
+    .row
+      label(for="username") 用户名
+      input.u-full-width#username(type="text", v-model="username")
+      label(for="password") 密码
+      input.u-full-width#password(type="password", v-model="password")
+    input.u-full-width.button-primary(type="button", v-on="click: signIn()", value="登录")
 </template>
 
 <script>
   require('../../static/bower_components/skeleton/css/skeleton.css');
-  
+
   var User = require('../models').User;
   module.exports = {
     data: function(){

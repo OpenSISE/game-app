@@ -4,6 +4,7 @@ var config = require('../config')
 
 module.exports = {
   signIn: function(username,password,callback){
+    console.log(END_POINT + '/user/signin');
     request
       .post(END_POINT + '/user/signin')
       .send({
@@ -11,6 +12,7 @@ module.exports = {
         password: password
       })
       .end(function(err,res){
+        console.log(err);
         if (err) {
           callback({
             message: '网络错误'
