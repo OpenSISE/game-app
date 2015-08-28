@@ -4,6 +4,32 @@ p{
   text-align: center;
 }
 
+#welcome{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 1;
+  background-image: url(../images/welcome.png);
+  background-size: cover;
+
+  h1{
+    color: #fff;
+    text-align: center;
+    margin-top: 15%;
+    font-size: 3em;
+  }
+
+  h2{
+    color: #fff;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: normal;
+  }
+}
+
 #screen{
   height: 500px;
   background-image: url(../images/background.png);

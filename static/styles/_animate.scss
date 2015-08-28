@@ -7,3 +7,25 @@
     opacity: 0;
   }
 }
+
+.welcome-transition {
+  transition: all 1.5s ease;
+  &.welcome-enter{
+    transform: scale(1);
+    opacity: 0;
+  }
+  &.welcome-leave{
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+
+// @keyframes welcome-in{
+//   0%{
+//     transform: scale(0);
+//   }
+//   100%{
+//     transform:
+//   }
+// }

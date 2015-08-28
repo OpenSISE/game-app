@@ -1,10 +1,13 @@
 <template lang="jade">
-  section#screen
+  #welcome(v-show="loading",v-transition="welcome", transition-mode="out-in")
+    h1 SISE Game
+    h2 让竞技不再孤单
+  section#screen(v-show="!loading")
     #landing
       .main(v-text="title")
       .sub(v-text="subTitle")
     #live
-  section#programs(v-repeat="shows")
+  section#programs(v-repeat="shows", v-show="!loading")
     .program
       .title
         .main(v-text="$key | gameName")
@@ -23,7 +26,8 @@
       return {
         title: 'TGC vs ECG',
         subTitle: '正在直播：第二届华软杯 - 英雄联盟四强',
-        shows: {}
+        shows: {},
+        loading: true
       }
     },
 
@@ -33,6 +37,9 @@
           console.log('err')
         } else {
           this.shows = shows;
+          setTimeout(function(){
+            this.loading = false
+          }.bind(this), 3000)
         }
       }.bind(this));
     }

@@ -10179,7 +10179,8 @@ webpackJsonp([0,1],[
 	      return {
 	        title: 'TGC vs ECG',
 	        subTitle: '正在直播：第二届华软杯 - 英雄联盟四强',
-	        shows: {}
+	        shows: {},
+	        loading: true
 	      }
 	    },
 
@@ -10189,6 +10190,9 @@ webpackJsonp([0,1],[
 	          console.log('err')
 	        } else {
 	          this.shows = shows;
+	          setTimeout(function(){
+	            this.loading = false
+	          }.bind(this), 3000)
 	        }
 	      }.bind(this));
 	    }
@@ -11719,7 +11723,7 @@ webpackJsonp([0,1],[
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<section id=\"screen\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div></section><section id=\"programs\" v-repeat=\"shows\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
+	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
 /* 35 */

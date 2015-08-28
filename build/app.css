@@ -512,6 +512,15 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
   .fade-transition.fade-leave {
     opacity: 0; }
 
+.welcome-transition {
+  transition: all 1.5s ease; }
+  .welcome-transition.welcome-enter {
+    transform: scale(1);
+    opacity: 0; }
+  .welcome-transition.welcome-leave {
+    transform: scale(2);
+    opacity: 0; }
+
 html {
   -webkit-font-smoothing: antialiased; }
 
@@ -544,6 +553,27 @@ i.fa {
       color: #fff; }
 p {
   text-align: center; }
+
+#welcome {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 1;
+  background-image: url(/build/5bdb49cb639af0742890923803a49ccf.png);
+  background-size: cover; }
+  #welcome h1 {
+    color: #fff;
+    text-align: center;
+    margin-top: 15%;
+    font-size: 3em; }
+  #welcome h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: normal; }
 
 #screen {
   height: 500px;
