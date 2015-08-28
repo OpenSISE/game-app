@@ -13,9 +13,14 @@ router.on('/room/:id', function(id){
   app.params.roomId = id;
 })
 
-router.on('/user/:id', function(id){
+router.on('/user', function(){
   app.view = 'user-view';
-  app.params.userId = id;
+  app.params.username = '';
+})
+
+router.on('/user/:username', function(username){
+  app.view = 'user-view';
+  app.params.username = username;
 })
 
 router.on('/signin', function(){

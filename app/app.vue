@@ -6,7 +6,7 @@
       a(href="#/signin").item 登录
       a(href="#/signup").item 注册
     #toolbar(v-if="signed")
-      a(href="#/user/{{user.userId}}").item {{user.username}}
+      a(href="#/user").item {{user.username}}
       a(href="#/signout").item 退出
   .container
     component(is="{{view}}", params="{{params}}", keep-alive, v-transition="fade",transition-mode="out-in")
@@ -24,10 +24,9 @@
     el: '#app',
     data: {
       view: '',
-      title: '', // landing title
-      subTitle: '', // landing sub title
       shows: {},
       signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
+      params: {},
       user: {
         userId: '',
         username: ''
@@ -45,7 +44,8 @@
     },
     components: {
       'home-view': require('./views/home.vue'),
-      'signin-view': require('./views/signin.vue')
+      'signin-view': require('./views/signin.vue'),
+      'user-view': require('./views/user.vue')
     }
   }
 </script>
