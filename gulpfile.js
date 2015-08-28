@@ -5,7 +5,7 @@ var gulp = require('gulp')
 
 
 var paths = {
-  view: ['./view/*.jade']
+  view: ['./index.jade']
 }
 
 gulp.task('default', function(){
