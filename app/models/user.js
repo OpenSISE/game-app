@@ -1,7 +1,6 @@
 var config = require('../config')
   , request = require('superagent')
   , END_POINT = config.api.END_POINT
-  , _ = require('lodash')
 
 module.exports = {
   signIn: function(username,password,callback){
@@ -24,9 +23,10 @@ module.exports = {
   },
   update: function(username, room, callback){
     var token = localStorage.getItem('token');
+    room.token = token;
     request
       .put(END_POINT + '/user/' + username)
-      .send(_.merge(room, {token: token}))
+      .send(room)
       .end(function(err,res){
         callback(err,res);
       })
