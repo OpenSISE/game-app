@@ -1,5 +1,5 @@
-var Vue = require('Vue')
-  , Router = require('../static/bower_components/director/build/director.min.js').Router
+var Vue = require('vue')
+  , Router = require('director').Router
   , router = new Router()
 
 var app = new Vue(require('./app.vue'));

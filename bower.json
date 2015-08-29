@@ -15,10 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "vue": "~0.12.10",
     "pure": "~0.6.0",
     "normalize.css": "~3.0.3",
-    "director": "~1.2.8",
     "skeleton": "~2.0.4"
   }
 }

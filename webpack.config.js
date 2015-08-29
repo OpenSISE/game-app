@@ -10,11 +10,6 @@ module.exports = {
     publicPath: '/build/',
     filename: 'app.js'
   },
-  resolve: {
-    alias: {
-      Vue: '../static/bower_components/vue/dist/vue.js'
-    }
-  },
   module: {
     loaders: [
       {
