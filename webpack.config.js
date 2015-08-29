@@ -22,7 +22,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style','css!sass')
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|swf)$/,
         loader: 'url?limit=8192'
       },
       { test: /\.vue$/,

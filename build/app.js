@@ -10046,7 +10046,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(10)
-	module.exports.template = __webpack_require__(52)
+	module.exports.template = __webpack_require__(51)
 
 
 /***/ },
@@ -10082,10 +10082,10 @@ webpackJsonp([0,1],[
 	    },
 	    components: {
 	      'home-view': __webpack_require__(25),
-	      'signin-view': __webpack_require__(36),
-	      'signup-view': __webpack_require__(41),
-	      'user-view': __webpack_require__(44),
-	      'room-view': __webpack_require__(49)
+	      'signin-view': __webpack_require__(37),
+	      'signup-view': __webpack_require__(42),
+	      'user-view': __webpack_require__(45),
+	      'room-view': __webpack_require__(48)
 	    }
 	  }
 
@@ -10167,7 +10167,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(26)
-	module.exports.template = __webpack_require__(35)
+	module.exports.template = __webpack_require__(36)
 
 
 /***/ },
@@ -10181,7 +10181,9 @@ webpackJsonp([0,1],[
 	        title: 'TGC vs ECG',
 	        subTitle: '正在直播：第二届华软杯 - 英雄联盟四强',
 	        shows: {},
-	        loading: true
+	        loading: true,
+	        playerSWF: __webpack_require__(35),
+	        eventUrl: 'rtmp://172.16.162.46:1935/live'
 	      }
 	    },
 
@@ -11724,23 +11726,29 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 35 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><div class=\"video\"></div><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
+	module.exports = __webpack_require__.p + "6ed6dc1a2f0a5580e3ce3b163ccd6e04.swf"
 
 /***/ },
 /* 36 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__(37)
-	module.exports.template = __webpack_require__(40)
-
+	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><a href=\"#/room/{{ username }}\" class=\"video\"><object v-attr=\"data: playerSWF\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></a><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(38);
+	module.exports = __webpack_require__(38)
+	module.exports.template = __webpack_require__(41)
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(39);
 
 	  var User = __webpack_require__(27).User;
 	  module.exports = {
@@ -11766,28 +11774,28 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 39 */,
-/* 40 */
+/* 40 */,
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"signin\" class=\"form\"><h4>登录</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/></div><input type=\"button\" v-on=\"click: signIn()\" value=\"登录\" class=\"u-full-width button-primary\"/></div>";
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(42)
-	module.exports.template = __webpack_require__(43)
+	module.exports = __webpack_require__(43)
+	module.exports.template = __webpack_require__(44)
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var User = __webpack_require__(27).User;
@@ -11822,26 +11830,24 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"signin\" class=\"form\"><h4>加入 SISE Game</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" placeholder=\"用以显示和登录\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/><label for=\"comfirm-password\">确认密码</label><input id=\"comfirm-password\" type=\"password\" v-model=\"comfirmPassword\" class=\"u-full-width\"/><input type=\"button\" href=\"javascript:void(0)\" v-on=\"click: signUp()\" value=\"加入\" class=\"button-primary u-full-width button-primary\"/></div></div>";
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(47)
-	module.exports.template = __webpack_require__(48)
+	module.exports = __webpack_require__(46)
+	module.exports.template = __webpack_require__(47)
 
 
 /***/ },
-/* 45 */,
-/* 46 */,
-/* 47 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(38);
+	__webpack_require__(39);
 
 	  var User = __webpack_require__(27).User;
 	  module.exports = {
@@ -11926,21 +11932,21 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 48 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; params.username===''\" class=\"form\"><h4>Hola, {{user.username}} :)</h4><div class=\"row\"><div class=\"six columns\"><label for=\"room-name\">直播名称</label><input id=\"room-name\" v-model=\"user.room.name\" type=\"text\" class=\"u-full-width\"/></div><div class=\"six columns\"><label for=\"games\">直播类别</label><select id=\"games\" v-model=\"user.room.game\" options=\"games\" class=\"u-full-width\"></select></div><label for=\"room-description\">直播简介</label><textarea id=\"room-description\" v-model=\"user.room.description\" class=\"u-full-width\"></textarea><label><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><span class=\"label-body\">在首页显示房间</span></label><input href=\"javascript:void(0)\" v-on=\"click: userUpdate()\" type=\"button\" value=\"更新\" class=\"button-primary\"/></div></div><div id=\"user\" v-if=\"!signed || params.username !== ''\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
 
 /***/ },
-/* 49 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(50)
-	module.exports.template = __webpack_require__(51)
+	module.exports = __webpack_require__(49)
+	module.exports.template = __webpack_require__(50)
 
 
 /***/ },
-/* 50 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var User = __webpack_require__(27).User;
@@ -11971,13 +11977,13 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 51 */
+/* 50 */
 /***/ function(module, exports) {
 
 	module.exports = "<p>{{room.name}}<p>{{room.description}}</p></p>";
 
 /***/ },
-/* 52 */
+/* 51 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"view\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\"></div>";

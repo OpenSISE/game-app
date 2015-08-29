@@ -527,6 +527,12 @@ html {
 i.fa {
   margin-right: 4px !important; }
 
+object {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: relative; }
+
 input.button-primary {
   background-color: #31B298 !important;
   border-color: #31B298 !important; }
@@ -628,8 +634,9 @@ p {
       #programs .program .items .item .video {
         width: 296px;
         height: 156px;
-        margin-bottom: 8px;
-        background-color: #000; }
+        margin-bottom: 8px; }
+      #programs .program .items .item a.video {
+        display: block; }
       #programs .program .items .item a.name {
         text-decoration: none;
         display: block;

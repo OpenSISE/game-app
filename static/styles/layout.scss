@@ -8,6 +8,13 @@ i.fa{
   margin-right: 4px !important;
 }
 
+object{
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: relative;
+}
+
 input.button-primary{
   background-color: $primaryColor !important;
   border-color: $primaryColor !important;
