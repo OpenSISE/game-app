@@ -566,8 +566,12 @@ input.button-primary {
     .header #toolbar .item:hover {
       background-color: #31B298;
       color: #fff; }
-p {
-  text-align: center; }
+
+.footer {
+  text-align: center;
+  font-size: .9em;
+  margin-top: 256px;
+  margin-bottom: 12px; }
 
 #welcome {
   position: absolute;
@@ -645,6 +649,32 @@ p {
         transition: color 0.2s; }
         #programs .program .items .item a.name:hover {
           color: #26977F; }
+
+#room-container {
+  width: 1080px;
+  margin: 0 auto;
+  margin-top: 64px; }
+  #room-container #info h2 {
+    display: inline-block; }
+  #room-container #info span {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 1.2em;
+    color: #a6a6a8; }
+  #room-container #video {
+    display: inline-block;
+    width: 720px;
+    height: 405px; }
+  #room-container #chat {
+    display: inline-block;
+    width: 360px;
+    height: 405px;
+    float: right;
+    background-color: #f2f2f2; }
+  #room-container #description {
+    margin-top: 28px; }
+    #room-container #description #text {
+      max-width: 720px; }
 @charset "UTF-8";
 /*
 * Skeleton V2.0.4

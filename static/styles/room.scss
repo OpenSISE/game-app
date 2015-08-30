@@ -1,0 +1,41 @@
+@import "settings";
+
+#room-container{
+  width: 1080px;
+  margin: 0 auto;
+  margin-top: 64px;
+
+  #info{
+    h2{
+      display: inline-block;
+    }
+    span{
+      display: inline-block;
+      margin-left: 12px;
+      font-size: 1.2em;
+      color: $primaryGrey;
+    }
+  }
+
+  #video{
+    display: inline-block;
+    width: 720px;
+    height: 720px/(320/180);
+  }
+
+  #chat{
+    display: inline-block;
+    width: (1080px-720px);
+    height: 720px/(320/180);
+    float: right;
+    background-color: $primaryGreyDark;
+  }
+
+  #description{
+    margin-top: 28px;
+
+    #text{
+      max-width: 720px;
+    }
+  }
+}

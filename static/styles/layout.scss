@@ -62,3 +62,13 @@ input.button-primary{
     }
   }
 }
+
+.footer{
+  text-align: center;
+  font-size: .9em;
+  margin-top: 256px;
+  margin-bottom: 12px;
+}
+
+@import "./index";
+@import "./room";

@@ -10924,7 +10924,6 @@ webpackJsonp([0,1],[
 	__webpack_require__(77);
 	  __webpack_require__(81);
 	  __webpack_require__(83);
-	  __webpack_require__(85);
 
 	  module.exports = {
 	    el: '#app',
@@ -10981,12 +10980,7 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 84 */,
-/* 85 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 85 */,
 /* 86 */,
 /* 87 */,
 /* 88 */,
@@ -12823,6 +12817,7 @@ webpackJsonp([0,1],[
 
 	    data: function(){
 	      return {
+	        playerSWF: __webpack_require__(101),
 	        room: {
 	          name: '',
 	          description: '',
@@ -12848,13 +12843,13 @@ webpackJsonp([0,1],[
 /* 116 */
 /***/ function(module, exports) {
 
-	module.exports = "<p>{{room.name}}<p>{{room.description}}</p></p>";
+	module.exports = "<div id=\"room-container\"><div id=\"info\"><h2>{{room.name}}</h2><span>by {{params.username}}</span></div><div id=\"video\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important; position: static\"><param name=\"flashvars\" value=\"src={{room.rtmp}}&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div><div id=\"chat\">chat</div><div id=\"description\"><h4>房间简介</h4><div id=\"text\">{{room.description}}</div></div></div>";
 
 /***/ },
 /* 117 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"view\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\"></div>";
+	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"view\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\">&copy; 2015 OpenSISE Project</div>";
 
 /***/ }
 ]);

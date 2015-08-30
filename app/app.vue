@@ -11,14 +11,13 @@
   .view
     component(is="{{view}}", params="{{params}}", keep-alive, v-transition="fade",transition-mode="out-in")
 
-  .footer
+  .footer &copy; 2015 OpenSISE Project
 </template>
 
 <script>
   require('../static/bower_components/normalize.css/normalize.css');
   require('../static/bower_components/pure/grids-min.css');
   require('../static/styles/layout.scss');
-  require('../static/styles/index.scss');
 
   module.exports = {
     el: '#app',
