@@ -3,7 +3,7 @@
     h4 加入 SISE Game
     .row
       label(for="username") 用户名
-      input.u-full-width#username(type="text", placeholder="用以显示和登录", v-model="username")
+      input.u-full-width#username(type="text", placeholder="用以显示和登录，5 - 12 个字母或下划线", v-model="username")
       label(for="password") 密码
       input.u-full-width#password(type="password", v-model="password")
       label(for="comfirm-password") 确认密码

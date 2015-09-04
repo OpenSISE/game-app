@@ -55,6 +55,10 @@ module.exports = {
             case '200':
               error = null;
               break;
+            case '400':
+              error = {
+                message: '用户名不合法，请使用 5 - 12 个字母或下划线'
+              }
           }
           callback(error,res.body);
         }
