@@ -2,11 +2,11 @@
   #room-container
     #info
       h2 {{room.name}}
-      span by {{params.username}}
+      span by {{$route.params.username}}
     #video
       object(v-attr="data: playerSWF", style="z-index:1 !important; position: static")
         param(name="flashvars", value="src={{room.rtmp}}&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
-    Chat(room="{{params.username}}")
+    Chat(room="{{$route.params.username}}")
     #description
       h4 房间简介
       #text {{room.description}}
@@ -14,9 +14,9 @@
 
 <script>
   var User = require('../models').User;
-  module.exports = {
-    props: ['params'],
 
+
+  module.exports = {
     data: function(){
       return {
         playerSWF: require("../../static/swfs/StrobeMediaPlayback.swf"),
@@ -27,17 +27,21 @@
         }
       }
     },
+    route: {
+      activate: function(transition){
+        transition.next();
+      }
+    },
     compiled: function(){
-      var app = this;
-      User.getUserInfo(app.params.username, function(err,res){
+      User.getUserInfo(this.$route.params.username, function(err,res){
         if (err) {
           alert(err.message);
         } else {
-          app.room.name = res.room.name;
-          app.room.description = res.room.description;
-          app.room.rtmp = res.room.rtmp;
+          this.room.name = res.room.name;
+          this.room.description = res.room.description;
+          this.room.rtmp = res.room.rtmp;
         }
-      })
+      }.bind(this))
     },
     components: {
       Chat: require('../components/Chat/Chat.vue')

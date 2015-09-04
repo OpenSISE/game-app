@@ -2,7 +2,7 @@
   #user.form(v-if="signed && !$route.params.username")
     //- 自己的资料
     h4 Hola, {{user.username}} :)
-    a.button.u-full-width(href="#/room/{{user.username}}" ) 进入我的房间
+    a.button.u-full-width(v-link="/room/{{user.username}}" ) 进入我的房间
     .row
       .six.columns
         label(for="room-name") 直播名称

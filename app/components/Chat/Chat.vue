@@ -10,6 +10,7 @@
 
 <script>
 
+  var io = require('socket.io-client');
 
   module.exports = {
     props: ['room'],
@@ -36,16 +37,16 @@
             username: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).username : 'Guest',
             content: this.content
           }
+
+          var socket = io(':3000', {'multiplex': false});
           socket.emit('chat', message);
-          this.messages.push(message);
           this.content = '';
         }
       }
     },
-    created: function(){
-      console.log('Chat created');
-    },
     compiled: function(){
+      // https://github.com/socketio/socket.io-client/issues/700
+      var socket = io(':3000', {'multiplex': false});
       socket.on('connect', function(){
         console.log(this.room);
         socket.emit('join', {
@@ -57,17 +58,6 @@
           this.messages.push(msg);
         }.bind(this))
       }.bind(this))
-    },
-    attached: function(){
-
-
-
-      // setInterval(function(){
-      //   this.messages.push({
-      //     username: 'randy',
-      //     content: 'fuck'
-      //   })
-      // }.bind(this),500)
     }
   }
 
