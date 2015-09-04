@@ -1,8 +1,9 @@
 <template lang="jade">
   #chat
     .items
+      #status(v-class="success: socketStatus === 1, failed: socketStatus === 2") 实时聊天{{socketStatusMessage[socketStatus]}}
       .item(v-repeat="messages")
-        a(href="/#/user/{{username}}").username {{username}}
+        .username {{username}}
         .content {{content}}
     .sender
       input.u-full-width(v-model="content", type="text", placeholder="按 Enter 发送", v-on="keyup:sendMessage | key 'enter'")
@@ -17,7 +18,9 @@
     data: function(){
       return {
         content: '',
-        messages: []
+        messages: [],
+        socketStatusMessage: ['连接中','连接成功', '连接失败'],
+        socketStatus: 0 // 0.connecting 1.success 2.failed
       }
     },
     watch: {
@@ -48,16 +51,19 @@
       // https://github.com/socketio/socket.io-client/issues/700
       var socket = io(':3000', {'multiplex': false});
       socket.on('connect', function(){
-        console.log(this.room);
+        this.socketStatus = 1;
         socket.emit('join', {
           room: this.room
         });
 
         socket.on('chat', function(msg){
-          console.log(msg);
           this.messages.push(msg);
         }.bind(this))
       }.bind(this))
+
+      socket.on('connect_error', function(){
+        this.socketStatus = 2;
+      })
     }
   }
 

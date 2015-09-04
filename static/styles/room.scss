@@ -32,6 +32,19 @@
     box-sizing: border-box;
     background-color: $primaryGreyDark;
 
+    #status{
+      text-align: center;
+      font-size: .9em;
+
+      &.success{
+        color: green;
+      }
+
+      &.failed{
+        color: red;
+      }
+    }
+
     .items{
       width: 100%;
       height: 720px/(320/180) * 0.85;

@@ -673,6 +673,13 @@ input.button-primary {
     padding: 12px;
     box-sizing: border-box;
     background-color: #f2f2f2; }
+    #room-container #chat #status {
+      text-align: center;
+      font-size: .9em; }
+      #room-container #chat #status.success {
+        color: green; }
+      #room-container #chat #status.failed {
+        color: red; }
     #room-container #chat .items {
       width: 100%;
       height: 344.25px;

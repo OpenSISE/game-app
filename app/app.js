@@ -8,7 +8,9 @@ Vue.use(VueRouter);
 
 var app = Vue.extend(require('./app.vue'));
 
-var router = new VueRouter();
+var router = new VueRouter({
+  saveScrollPosition: false
+});
 
 router.map({
   '/': {
