@@ -12840,15 +12840,20 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	var Show = __webpack_require__(118).Show;
+	  var User = __webpack_require__(118).User;
 	  module.exports = {
 	    data: function(){
 	      return {
-	        title: 'TGC vs ECG',
-	        subTitle: '正在直播：第二届华软杯 - 英雄联盟四强',
+	        userCount: 0,
+	        event: {
+	          username: '',
+	          title: '',
+	          subTitle: '',
+	          rtmp: 'rtmp://172.16.162.46:1935/live'
+	        },
 	        shows: {},
 	        loading: true,
 	        playerSWF: __webpack_require__(126),
-	        eventUrl: 'rtmp://172.16.162.46:1935/live'
 	      }
 	    },
 	    compiled: function(){
@@ -12862,6 +12867,27 @@ webpackJsonp([0,1],[
 	          }.bind(this), 1200)
 	        }
 	      }.bind(this));
+
+	      Show.getEvent(function(err,event){
+	        if (err) {
+	          console.log(err);
+	        } else {
+	          if (event !== null) {
+	            this.event.title = event.room.screenTitle;
+	            this.event.subTitle = event.room.screenSubTitle;
+	            this.event.eventUrl = event.room.rtmp;
+	            this.event.username = event.username;
+	          } else {
+	            User.count(function(err,res){
+	              if (err) {
+	                alert(err.message);
+	              } else {
+	                this.userCount = res.count;
+	              }
+	            }.bind(this))
+	          }
+	        }
+	      }.bind(this))
 	    }
 	  }
 
@@ -12910,6 +12936,17 @@ webpackJsonp([0,1],[
 	          callback(err);
 	        } else {
 	          callback(err, response.body)
+	        }
+	      })
+	  },
+	  getEvent: function(callback){
+	    request
+	      .get(END_POINT + '/show/event')
+	      .end(function(err, response){
+	        if (err) {
+	          callback(err);
+	        } else {
+	          callback(err,response.body);
 	        }
 	      })
 	  }
@@ -14388,6 +14425,22 @@ webpackJsonp([0,1],[
 	          }
 	        }
 	      })
+	  },
+
+	  count: function(callback){
+	    request
+	      .get(END_POINT + '/user/count')
+	      .end(function(err,res){
+	        if (err) {
+	          callback({
+	            message: '网络错误'
+	          })
+	        } else {
+	          callback(null, {
+	            count: res.body.count
+	          })
+	        }
+	      })
 	  }
 	}
 
@@ -14402,7 +14455,7 @@ webpackJsonp([0,1],[
 /* 127 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><a href=\"#/room/{{ username }}\" class=\"video\"><object v-attr=\"data: playerSWF\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></a><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
+	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\" v-if=\"event.username\"><div v-text=\"event.title\" class=\"main\"></div><div class=\"sub\"><a v-link=\"/room/{{event.username}}\">正在直播：{{event.subTitle}}</a></div></div><div id=\"landing\" v-if=\"!event.username\"><div id=\"count\"><span style=\"font-size: 2.4em;\">{{userCount}} </span><span>个华软玩家在 SISE Game 分享快乐</span></div></div><div id=\"live\" v-if=\"event.username\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><a href=\"#/room/{{ username }}\" class=\"video\"><object v-attr=\"data: playerSWF\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></a><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
 /* 128 */

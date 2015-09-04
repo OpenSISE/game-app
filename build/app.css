@@ -606,6 +606,12 @@ input.button-primary {
     top: 128px;
     text-align: center;
     width: 100%; }
+    #screen #landing #count {
+      margin-top: 10%;
+      font-size: 2em; }
+    #screen #landing a {
+      color: #fff;
+      text-decoration: none; }
     #screen #landing .main {
       font-size: 5em; }
     #screen #landing .sub {

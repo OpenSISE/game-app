@@ -110,5 +110,21 @@ module.exports = {
           }
         }
       })
+  },
+
+  count: function(callback){
+    request
+      .get(END_POINT + '/user/count')
+      .end(function(err,res){
+        if (err) {
+          callback({
+            message: '网络错误'
+          })
+        } else {
+          callback(null, {
+            count: res.body.count
+          })
+        }
+      })
   }
 }

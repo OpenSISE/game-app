@@ -13,5 +13,16 @@ module.exports = {
           callback(err, response.body)
         }
       })
+  },
+  getEvent: function(callback){
+    request
+      .get(END_POINT + '/show/event')
+      .end(function(err, response){
+        if (err) {
+          callback(err);
+        } else {
+          callback(err,response.body);
+        }
+      })
   }
 }
