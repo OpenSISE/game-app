@@ -2,11 +2,11 @@ webpackJsonp([0,1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Vue = __webpack_require__(7)
-	  , Router = __webpack_require__(74).Router
+	var Vue = __webpack_require__(8)
+	  , Router = __webpack_require__(75).Router
 	  , router = new Router()
 
-	var app = new Vue(__webpack_require__(75));
+	var app = new Vue(__webpack_require__(76));
 
 	router.on('/home', function(){
 	  app.view = 'home-view'
@@ -63,10 +63,11 @@ webpackJsonp([0,1],[
 /* 4 */,
 /* 5 */,
 /* 6 */,
-/* 7 */
+/* 7 */,
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 	var extend = _.extend
 
 	/**
@@ -91,7 +92,7 @@ webpackJsonp([0,1],[
 	 * Mixin global API
 	 */
 
-	extend(Vue, __webpack_require__(17))
+	extend(Vue, __webpack_require__(18))
 
 	/**
 	 * Vue and every constructor that extends Vue has an
@@ -104,9 +105,9 @@ webpackJsonp([0,1],[
 
 	Vue.options = {
 	  replace: true,
-	  directives: __webpack_require__(33),
-	  elementDirectives: __webpack_require__(55),
-	  filters: __webpack_require__(58),
+	  directives: __webpack_require__(34),
+	  elementDirectives: __webpack_require__(56),
+	  filters: __webpack_require__(59),
 	  transitions: {},
 	  components: {},
 	  partials: {}
@@ -138,42 +139,42 @@ webpackJsonp([0,1],[
 	 * Mixin internal instance methods
 	 */
 
-	extend(p, __webpack_require__(60))
 	extend(p, __webpack_require__(61))
 	extend(p, __webpack_require__(62))
-	extend(p, __webpack_require__(66))
-	extend(p, __webpack_require__(68))
+	extend(p, __webpack_require__(63))
+	extend(p, __webpack_require__(67))
+	extend(p, __webpack_require__(69))
 
 	/**
 	 * Mixin public API methods
 	 */
 
-	extend(p, __webpack_require__(69))
 	extend(p, __webpack_require__(70))
 	extend(p, __webpack_require__(71))
 	extend(p, __webpack_require__(72))
 	extend(p, __webpack_require__(73))
+	extend(p, __webpack_require__(74))
 
 	module.exports = _.Vue = Vue
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var lang = __webpack_require__(9)
+	var lang = __webpack_require__(10)
 	var extend = lang.extend
 
 	extend(exports, lang)
-	extend(exports, __webpack_require__(10))
 	extend(exports, __webpack_require__(11))
-	extend(exports, __webpack_require__(14))
+	extend(exports, __webpack_require__(12))
 	extend(exports, __webpack_require__(15))
 	extend(exports, __webpack_require__(16))
+	extend(exports, __webpack_require__(17))
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/**
@@ -487,7 +488,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	// can we use __proto__?
@@ -578,11 +579,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
 
 	/**
 	 * Query an element selector if it's not an element already.
@@ -854,10 +855,10 @@ webpackJsonp([0,1],[
 	    : document.createTextNode(persist ? ' ' : '')
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -953,7 +954,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -1083,11 +1084,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
 	var extend = _.extend
 
 	/**
@@ -1444,13 +1445,13 @@ webpackJsonp([0,1],[
 	  return asset
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
 
 	/**
 	 * Check if an element is a component, if yes return its
@@ -1575,10 +1576,10 @@ webpackJsonp([0,1],[
 	  return Object.prototype.toString.call(val).slice(8, -1)
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -1587,7 +1588,7 @@ webpackJsonp([0,1],[
 
 	if (process.env.NODE_ENV !== 'production') {
 
-	  var config = __webpack_require__(13)
+	  var config = __webpack_require__(14)
 	  var hasConsole = typeof console !== 'undefined'
 
 	  /**
@@ -1646,14 +1647,14 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
+	var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
 
 	/**
 	 * Expose useful internals
@@ -1662,14 +1663,14 @@ webpackJsonp([0,1],[
 	exports.util = _
 	exports.config = config
 	exports.nextTick = _.nextTick
-	exports.compiler = __webpack_require__(18)
+	exports.compiler = __webpack_require__(19)
 
 	exports.parsers = {
-	  path: __webpack_require__(28),
-	  text: __webpack_require__(21),
-	  template: __webpack_require__(30),
-	  directive: __webpack_require__(23),
-	  expression: __webpack_require__(27)
+	  path: __webpack_require__(29),
+	  text: __webpack_require__(22),
+	  template: __webpack_require__(31),
+	  directive: __webpack_require__(24),
+	  expression: __webpack_require__(28)
 	}
 
 	/**
@@ -1774,27 +1775,27 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(8)
-
-	_.extend(exports, __webpack_require__(19))
-	_.extend(exports, __webpack_require__(32))
-
-
-/***/ },
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var compileProps = __webpack_require__(20)
-	var config = __webpack_require__(13)
-	var textParser = __webpack_require__(21)
-	var dirParser = __webpack_require__(23)
-	var templateParser = __webpack_require__(30)
+	var _ = __webpack_require__(9)
+
+	_.extend(exports, __webpack_require__(20))
+	_.extend(exports, __webpack_require__(33))
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var compileProps = __webpack_require__(21)
+	var config = __webpack_require__(14)
+	var textParser = __webpack_require__(22)
+	var dirParser = __webpack_require__(24)
+	var templateParser = __webpack_require__(31)
 	var resolveAsset = _.resolveAsset
-	var componentDef = __webpack_require__(31)
+	var componentDef = __webpack_require__(32)
 
 	// terminal directives
 	var terminalDirectives = [
@@ -2414,19 +2415,19 @@ webpackJsonp([0,1],[
 	  return a > b ? 1 : -1
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var textParser = __webpack_require__(21)
-	var propDef = __webpack_require__(24)
-	var propBindingModes = __webpack_require__(13)._propBindingModes
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var textParser = __webpack_require__(22)
+	var propDef = __webpack_require__(25)
+	var propBindingModes = __webpack_require__(14)._propBindingModes
 
 	// regexes
-	var identRE = __webpack_require__(28).identRE
+	var identRE = __webpack_require__(29).identRE
 	var dataAttrRE = /^data-/
 	var settablePathRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\[[^\[\]]+\])*$/
 	var literalValueRE = /^(true|false)$|^\d.*/
@@ -2604,15 +2605,15 @@ webpackJsonp([0,1],[
 	    : def
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(22)
-	var config = __webpack_require__(13)
-	var dirParser = __webpack_require__(23)
+	var Cache = __webpack_require__(23)
+	var config = __webpack_require__(14)
+	var dirParser = __webpack_require__(24)
 	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
 	var cache, tagRE, htmlRE, firstChar, lastChar
 
@@ -2789,7 +2790,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	/**
@@ -2907,11 +2908,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var Cache = __webpack_require__(22)
+	var _ = __webpack_require__(9)
+	var Cache = __webpack_require__(23)
 	var cache = new Cache(1000)
 	var argRE = /^[^\{\?]+$|^'[^']*'$|^"[^"]*"$/
 	var filterTokenRE = /[^\s'"]+|'[^']*'|"[^"]*"/g
@@ -3093,7 +3094,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// NOTE: the prop internal directive is compiled and linked
@@ -3101,9 +3102,9 @@ webpackJsonp([0,1],[
 	// The purpose is to make the initial prop values available
 	// inside `created` hooks and `data` functions.
 
-	var _ = __webpack_require__(8)
-	var Watcher = __webpack_require__(25)
-	var bindingModes = __webpack_require__(13)._propBindingModes
+	var _ = __webpack_require__(9)
+	var Watcher = __webpack_require__(26)
+	var bindingModes = __webpack_require__(14)._propBindingModes
 
 	module.exports = {
 
@@ -3161,14 +3162,14 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
-	var Dep = __webpack_require__(26)
-	var expParser = __webpack_require__(27)
-	var batcher = __webpack_require__(29)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
+	var Dep = __webpack_require__(27)
+	var expParser = __webpack_require__(28)
+	var batcher = __webpack_require__(30)
 	var uid = 0
 
 	/**
@@ -3478,13 +3479,13 @@ webpackJsonp([0,1],[
 
 	module.exports = Watcher
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	/**
 	 * A dep is an observable that can have multiple
@@ -3546,12 +3547,12 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var Path = __webpack_require__(28)
-	var Cache = __webpack_require__(22)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var Path = __webpack_require__(29)
+	var Cache = __webpack_require__(23)
 	var expressionCache = new Cache(1000)
 
 	var allowedKeywords =
@@ -3814,14 +3815,14 @@ webpackJsonp([0,1],[
 	    exp.slice(0, 5) !== 'Math.'
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var Cache = __webpack_require__(22)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var Cache = __webpack_require__(23)
 	var pathCache = new Cache(1000)
 	var identRE = exports.identRE = /^[$_a-zA-Z]+[\w$]*$/
 
@@ -4169,14 +4170,14 @@ webpackJsonp([0,1],[
 	  )
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
 
 	// we have two separate queues: one for directive updates
 	// and one for user watcher registered via $watch().
@@ -4274,14 +4275,14 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var Cache = __webpack_require__(22)
+	var _ = __webpack_require__(9)
+	var Cache = __webpack_require__(23)
 	var templateCache = new Cache(1000)
 	var idSelectorCache = new Cache(1000)
 
@@ -4565,12 +4566,12 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
-	var templateParser = __webpack_require__(30)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
+	var templateParser = __webpack_require__(31)
 
 	module.exports = {
 
@@ -4913,15 +4914,15 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
-	var templateParser = __webpack_require__(30)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
+	var templateParser = __webpack_require__(31)
 
 	/**
 	 * Process an element or a DocumentFragment based on a
@@ -5064,43 +5065,43 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
-
-/***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// manipulation directives
-	exports.text = __webpack_require__(34)
-	exports.html = __webpack_require__(35)
-	exports.attr = __webpack_require__(36)
-	exports.show = __webpack_require__(37)
-	exports['class'] = __webpack_require__(39)
-	exports.el = __webpack_require__(40)
-	exports.ref = __webpack_require__(41)
-	exports.cloak = __webpack_require__(42)
-	exports.style = __webpack_require__(43)
-	exports.transition = __webpack_require__(44)
-
-	// event listener directives
-	exports.on = __webpack_require__(47)
-	exports.model = __webpack_require__(48)
-
-	// logic control directives
-	exports.repeat = __webpack_require__(53)
-	exports['if'] = __webpack_require__(54)
-
-	// internal directives that should not be used directly
-	// but we still want to expose them for advanced usage.
-	exports._component = __webpack_require__(31)
-	exports._prop = __webpack_require__(24)
-
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	// manipulation directives
+	exports.text = __webpack_require__(35)
+	exports.html = __webpack_require__(36)
+	exports.attr = __webpack_require__(37)
+	exports.show = __webpack_require__(38)
+	exports['class'] = __webpack_require__(40)
+	exports.el = __webpack_require__(41)
+	exports.ref = __webpack_require__(42)
+	exports.cloak = __webpack_require__(43)
+	exports.style = __webpack_require__(44)
+	exports.transition = __webpack_require__(45)
+
+	// event listener directives
+	exports.on = __webpack_require__(48)
+	exports.model = __webpack_require__(49)
+
+	// logic control directives
+	exports.repeat = __webpack_require__(54)
+	exports['if'] = __webpack_require__(55)
+
+	// internal directives that should not be used directly
+	// but we still want to expose them for advanced usage.
+	exports._component = __webpack_require__(32)
+	exports._prop = __webpack_require__(25)
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(9)
 
 	module.exports = {
 
@@ -5117,11 +5118,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var templateParser = __webpack_require__(30)
+	var _ = __webpack_require__(9)
+	var templateParser = __webpack_require__(31)
 
 	module.exports = {
 
@@ -5163,7 +5164,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	// xlink
@@ -5228,10 +5229,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var transition = __webpack_require__(38)
+	var transition = __webpack_require__(39)
 
 	module.exports = function (value) {
 	  var el = this.el
@@ -5242,10 +5243,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	/**
 	 * Append with transition.
@@ -5376,10 +5377,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 	var addClass = _.addClass
 	var removeClass = _.removeClass
 
@@ -5452,7 +5453,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -5470,10 +5471,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
 
 	module.exports = {
 
@@ -5496,13 +5497,13 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(13)
+	var config = __webpack_require__(14)
 
 	module.exports = {
 	  bind: function () {
@@ -5515,10 +5516,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 	var prefixes = ['-webkit-', '-moz-', '-ms-']
 	var camelPrefixes = ['Webkit', 'Moz', 'ms']
 	var importantRE = /!important;?$/
@@ -5631,11 +5632,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var Transition = __webpack_require__(45)
+	var _ = __webpack_require__(9)
+	var Transition = __webpack_require__(46)
 
 	module.exports = {
 
@@ -5663,11 +5664,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var queue = __webpack_require__(46)
+	var _ = __webpack_require__(9)
+	var queue = __webpack_require__(47)
 	var addClass = _.addClass
 	var removeClass = _.removeClass
 	var transitionEndEvent = _.transitionEndEvent
@@ -5995,10 +5996,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 	var queue = []
 	var queued = false
 
@@ -6036,10 +6037,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
 
 	module.exports = {
 
@@ -6099,19 +6100,19 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
 
 	var handlers = {
-	  text: __webpack_require__(49),
-	  radio: __webpack_require__(50),
-	  select: __webpack_require__(51),
-	  checkbox: __webpack_require__(52)
+	  text: __webpack_require__(50),
+	  radio: __webpack_require__(51),
+	  select: __webpack_require__(52),
+	  checkbox: __webpack_require__(53)
 	}
 
 	module.exports = {
@@ -6182,13 +6183,13 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	module.exports = {
 
@@ -6319,10 +6320,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	module.exports = {
 
@@ -6358,12 +6359,12 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var Watcher = __webpack_require__(25)
-	var dirParser = __webpack_require__(23)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var Watcher = __webpack_require__(26)
+	var dirParser = __webpack_require__(24)
 
 	module.exports = {
 
@@ -6592,13 +6593,13 @@ webpackJsonp([0,1],[
 	  return -1
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	module.exports = {
 
@@ -6643,17 +6644,17 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
 	var isObject = _.isObject
 	var isPlainObject = _.isPlainObject
-	var textParser = __webpack_require__(21)
-	var expParser = __webpack_require__(27)
-	var templateParser = __webpack_require__(30)
-	var compiler = __webpack_require__(18)
+	var textParser = __webpack_require__(22)
+	var expParser = __webpack_require__(28)
+	var templateParser = __webpack_require__(31)
+	var compiler = __webpack_require__(19)
 	var uid = 0
 
 	// async component resolution states
@@ -7401,17 +7402,17 @@ webpackJsonp([0,1],[
 	    type === 'boolean'
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var compiler = __webpack_require__(18)
-	var templateParser = __webpack_require__(30)
-	var transition = __webpack_require__(38)
-	var Cache = __webpack_require__(22)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var compiler = __webpack_require__(19)
+	var templateParser = __webpack_require__(31)
+	var transition = __webpack_require__(39)
+	var Cache = __webpack_require__(23)
 	var cache = new Cache(1000)
 
 	module.exports = {
@@ -7533,22 +7534,22 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
-
-/***/ },
-/* 55 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports.content = __webpack_require__(56)
-	exports.partial = __webpack_require__(57)
-
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var clone = __webpack_require__(30).clone
+	exports.content = __webpack_require__(57)
+	exports.partial = __webpack_require__(58)
+
+
+/***/ },
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(9)
+	var clone = __webpack_require__(31).clone
 
 	// This is the elementDirective that handles <content>
 	// transclusions. It relies on the raw content of an
@@ -7661,18 +7662,18 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var templateParser = __webpack_require__(30)
-	var textParser = __webpack_require__(21)
-	var compiler = __webpack_require__(18)
-	var Cache = __webpack_require__(22)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var templateParser = __webpack_require__(31)
+	var textParser = __webpack_require__(22)
+	var compiler = __webpack_require__(19)
+	var Cache = __webpack_require__(23)
 	var cache = new Cache(1000)
 
 	// v-partial reuses logic from v-if
-	var vIf = __webpack_require__(54)
+	var vIf = __webpack_require__(55)
 
 	module.exports = {
 
@@ -7738,13 +7739,13 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	/**
 	 * Stringify value.
@@ -7888,15 +7889,15 @@ webpackJsonp([0,1],[
 	 * Install special array filters
 	 */
 
-	_.extend(exports, __webpack_require__(59))
+	_.extend(exports, __webpack_require__(60))
 
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var Path = __webpack_require__(28)
+	var _ = __webpack_require__(9)
+	var Path = __webpack_require__(29)
 
 	/**
 	 * Filter filter for v-repeat
@@ -7990,10 +7991,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mergeOptions = __webpack_require__(8).mergeOptions
+	var mergeOptions = __webpack_require__(9).mergeOptions
 
 	/**
 	 * The main init sequence. This is called for every
@@ -8085,10 +8086,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
 	var inDoc = _.inDoc
 
 	/**
@@ -8228,17 +8229,17 @@ webpackJsonp([0,1],[
 	  this.$emit('hook:' + hook)
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var compiler = __webpack_require__(18)
-	var Observer = __webpack_require__(63)
-	var Dep = __webpack_require__(26)
-	var Watcher = __webpack_require__(25)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var compiler = __webpack_require__(19)
+	var Observer = __webpack_require__(64)
+	var Dep = __webpack_require__(27)
+	var Watcher = __webpack_require__(26)
 
 	/**
 	 * Setup the scope of an instance, which contains:
@@ -8517,18 +8518,18 @@ webpackJsonp([0,1],[
 	  })
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
-	var Dep = __webpack_require__(26)
-	var arrayMethods = __webpack_require__(64)
+	var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
+	var Dep = __webpack_require__(27)
+	var arrayMethods = __webpack_require__(65)
 	var arrayKeys = Object.getOwnPropertyNames(arrayMethods)
-	__webpack_require__(65)
+	__webpack_require__(66)
 
 	/**
 	 * Observer class that are attached to each observed
@@ -8731,10 +8732,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 	var arrayProto = Array.prototype
 	var arrayMethods = Object.create(arrayProto)
 
@@ -8829,10 +8830,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 	var objProto = Object.prototype
 
 	/**
@@ -8917,12 +8918,12 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var Directive = __webpack_require__(67)
-	var compiler = __webpack_require__(18)
+	var _ = __webpack_require__(9)
+	var Directive = __webpack_require__(68)
+	var compiler = __webpack_require__(19)
 
 	/**
 	 * Transclude, compile and link element.
@@ -9123,14 +9124,14 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var config = __webpack_require__(13)
-	var Watcher = __webpack_require__(25)
-	var textParser = __webpack_require__(21)
-	var expParser = __webpack_require__(27)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var config = __webpack_require__(14)
+	var Watcher = __webpack_require__(26)
+	var textParser = __webpack_require__(22)
+	var expParser = __webpack_require__(28)
 
 	/**
 	 * A directive links a DOM element with a piece of data,
@@ -9378,13 +9379,13 @@ webpackJsonp([0,1],[
 
 	module.exports = Directive
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
 
 	/**
 	 * Apply a list of filter (descriptors) to a value.
@@ -9478,17 +9479,17 @@ webpackJsonp([0,1],[
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Watcher = __webpack_require__(25)
-	var Path = __webpack_require__(28)
-	var textParser = __webpack_require__(21)
-	var dirParser = __webpack_require__(23)
-	var expParser = __webpack_require__(27)
+	var Watcher = __webpack_require__(26)
+	var Path = __webpack_require__(29)
+	var textParser = __webpack_require__(22)
+	var dirParser = __webpack_require__(24)
+	var expParser = __webpack_require__(28)
 	var filterRE = /[^|]\|[^|]/
 
 	/**
@@ -9638,11 +9639,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
-	var transition = __webpack_require__(38)
+	var _ = __webpack_require__(9)
+	var transition = __webpack_require__(39)
 
 	/**
 	 * Convenience on-instance nextTick. The callback is
@@ -9870,10 +9871,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	/**
 	 * Listen on the given `event` with `fn`.
@@ -10050,10 +10051,10 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(8)
+	var _ = __webpack_require__(9)
 
 	/**
 	 * Create a child instance that prototypally inherits
@@ -10105,11 +10106,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(8)
-	var compiler = __webpack_require__(18)
+	/* WEBPACK VAR INJECTION */(function(process) {var _ = __webpack_require__(9)
+	var compiler = __webpack_require__(19)
 
 	/**
 	 * Set instance target element and kick off the compilation
@@ -10177,10 +10178,10 @@ webpackJsonp([0,1],[
 	  return compiler.compile(el, this.$options, true)(this, el, host)
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -10910,20 +10911,20 @@ webpackJsonp([0,1],[
 	}( true ? exports : window));
 
 /***/ },
-/* 75 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(76)
-	module.exports.template = __webpack_require__(117)
-
-
-/***/ },
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(77);
-	  __webpack_require__(81);
-	  __webpack_require__(83);
+	module.exports = __webpack_require__(77)
+	module.exports.template = __webpack_require__(119)
+
+
+/***/ },
+/* 77 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(78);
+	  __webpack_require__(82);
+	  __webpack_require__(84);
 
 	  module.exports = {
 	    el: '#app',
@@ -10944,50 +10945,48 @@ webpackJsonp([0,1],[
 	      }
 	    },
 	    filters: {
-	      gameName: __webpack_require__(89).gameName,
-	      gameSubName: __webpack_require__(89).gameSubName
+	      gameName: __webpack_require__(88).gameName,
+	      gameSubName: __webpack_require__(88).gameSubName
 	    },
 	    components: {
-	      'home-view': __webpack_require__(91),
-	      'signin-view': __webpack_require__(103),
-	      'signup-view': __webpack_require__(108),
-	      'user-view': __webpack_require__(111),
-	      'room-view': __webpack_require__(114)
+	      'home-view': __webpack_require__(90),
+	      'signin-view': __webpack_require__(102),
+	      'signup-view': __webpack_require__(107),
+	      'user-view': __webpack_require__(110),
+	      'room-view': __webpack_require__(113)
 	    }
 	  }
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 78 */,
 /* 79 */,
 /* 80 */,
-/* 81 */
+/* 81 */,
+/* 82 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 82 */,
-/* 83 */
+/* 83 */,
+/* 84 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 84 */,
 /* 85 */,
 /* 86 */,
 /* 87 */,
-/* 88 */,
-/* 89 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var gameNameUtils = __webpack_require__(90);
+	var gameNameUtils = __webpack_require__(89);
 
 	exports.gameName = function(gameId){
 	  if(gameId) return gameNameUtils[gameId].name;
@@ -11001,7 +11000,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 90 */
+/* 89 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -11025,18 +11024,18 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 91 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(92)
-	module.exports.template = __webpack_require__(102)
+	module.exports = __webpack_require__(91)
+	module.exports.template = __webpack_require__(101)
 
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Show = __webpack_require__(93).Show;
+	var Show = __webpack_require__(92).Show;
 	  module.exports = {
 	    data: function(){
 	      return {
@@ -11044,7 +11043,7 @@ webpackJsonp([0,1],[
 	        subTitle: '正在直播：第二届华软杯 - 英雄联盟四强',
 	        shows: {},
 	        loading: true,
-	        playerSWF: __webpack_require__(101),
+	        playerSWF: __webpack_require__(100),
 	        eventUrl: 'rtmp://172.16.162.46:1935/live'
 	      }
 	    },
@@ -11064,18 +11063,18 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 93 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Event: __webpack_require__(94),
-	  Show: __webpack_require__(95),
-	  User: __webpack_require__(100)
+	  Event: __webpack_require__(93),
+	  Show: __webpack_require__(94),
+	  User: __webpack_require__(99)
 	}
 
 
 /***/ },
-/* 94 */
+/* 93 */
 /***/ function(module, exports) {
 
 	var methods = {
@@ -11092,11 +11091,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 95 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(96)
-	  , request = __webpack_require__(97)
+	var config = __webpack_require__(95)
+	  , request = __webpack_require__(96)
 	  , END_POINT = config.api.END_POINT
 
 	module.exports = {
@@ -11115,7 +11114,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 96 */
+/* 95 */
 /***/ function(module, exports) {
 
 	var config = {
@@ -11128,15 +11127,15 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Emitter = __webpack_require__(98);
-	var reduce = __webpack_require__(99);
+	var Emitter = __webpack_require__(97);
+	var reduce = __webpack_require__(98);
 
 	/**
 	 * Root reference for iframes.
@@ -12272,7 +12271,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports) {
 
 	
@@ -12442,7 +12441,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 99 */
+/* 98 */
 /***/ function(module, exports) {
 
 	
@@ -12471,11 +12470,11 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 100 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(96)
-	  , request = __webpack_require__(97)
+	var config = __webpack_require__(95)
+	  , request = __webpack_require__(96)
 	  , END_POINT = config.api.END_POINT
 
 	module.exports = {
@@ -12587,32 +12586,32 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 101 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "6ed6dc1a2f0a5580e3ce3b163ccd6e04.swf"
 
 /***/ },
-/* 102 */
+/* 101 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><a href=\"#/room/{{ username }}\" class=\"video\"><object v-attr=\"data: playerSWF\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></a><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
-/* 103 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(104)
-	module.exports.template = __webpack_require__(107)
+	module.exports = __webpack_require__(103)
+	module.exports.template = __webpack_require__(106)
 
 
 /***/ },
-/* 104 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(105);
+	__webpack_require__(104);
 
-	  var User = __webpack_require__(93).User;
+	  var User = __webpack_require__(92).User;
 	  module.exports = {
 	    data: function(){
 	      return {
@@ -12636,31 +12635,31 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 105 */
+/* 104 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 106 */,
-/* 107 */
+/* 105 */,
+/* 106 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"signin\" class=\"form\"><h4>登录</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/></div><input type=\"button\" v-on=\"click: signIn()\" value=\"登录\" class=\"u-full-width button-primary\"/></div>";
 
 /***/ },
-/* 108 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(109)
-	module.exports.template = __webpack_require__(110)
+	module.exports = __webpack_require__(108)
+	module.exports.template = __webpack_require__(109)
 
 
 /***/ },
-/* 109 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var User = __webpack_require__(93).User;
+	var User = __webpack_require__(92).User;
 	  module.exports = {
 	    data: function(){
 	      return {
@@ -12692,26 +12691,26 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 110 */
+/* 109 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"signin\" class=\"form\"><h4>加入 SISE Game</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" placeholder=\"用以显示和登录\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/><label for=\"comfirm-password\">确认密码</label><input id=\"comfirm-password\" type=\"password\" v-model=\"comfirmPassword\" class=\"u-full-width\"/><input type=\"button\" href=\"javascript:void(0)\" v-on=\"click: signUp()\" value=\"加入\" class=\"button-primary u-full-width button-primary\"/></div></div>";
 
 /***/ },
-/* 111 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(112)
-	module.exports.template = __webpack_require__(113)
+	module.exports = __webpack_require__(111)
+	module.exports.template = __webpack_require__(112)
 
 
 /***/ },
-/* 112 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(105);
+	__webpack_require__(104);
 
-	  var User = __webpack_require__(93).User;
+	  var User = __webpack_require__(92).User;
 	  module.exports = {
 	    props: ['params'],
 	    data: function(){
@@ -12794,30 +12793,30 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 113 */
+/* 112 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; params.username===''\" class=\"form\"><h4>Hola, {{user.username}} :)</h4><a href=\"#/room/{{user.username}}\" class=\"button u-full-width\">进入我的房间</a><div class=\"row\"><div class=\"six columns\"><label for=\"room-name\">直播名称</label><input id=\"room-name\" v-model=\"user.room.name\" type=\"text\" class=\"u-full-width\"/></div><div class=\"six columns\"><label for=\"games\">直播类别</label><select id=\"games\" v-model=\"user.room.game\" options=\"games\" class=\"u-full-width\"></select></div><label for=\"room-description\">直播简介</label><textarea id=\"room-description\" v-model=\"user.room.description\" class=\"u-full-width\"></textarea><label><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><span class=\"label-body\">在首页显示房间</span></label><input href=\"javascript:void(0)\" v-on=\"click: userUpdate()\" type=\"button\" value=\"更新\" class=\"button-primary\"/></div></div><div id=\"user\" v-if=\"!signed || params.username !== ''\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
 
 /***/ },
-/* 114 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(115)
-	module.exports.template = __webpack_require__(116)
+	module.exports = __webpack_require__(114)
+	module.exports.template = __webpack_require__(118)
 
 
 /***/ },
-/* 115 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var User = __webpack_require__(93).User;
+	var User = __webpack_require__(92).User;
 	  module.exports = {
 	    props: ['params'],
 
 	    data: function(){
 	      return {
-	        playerSWF: __webpack_require__(101),
+	        playerSWF: __webpack_require__(100),
 	        room: {
 	          name: '',
 	          description: '',
@@ -12836,17 +12835,75 @@ webpackJsonp([0,1],[
 	          app.room.rtmp = res.room.rtmp;
 	        }
 	      })
+	    },
+	    components: {
+	      Chat: __webpack_require__(115)
 	    }
 	  }
+
+/***/ },
+/* 115 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(116)
+	module.exports.template = __webpack_require__(117)
+
 
 /***/ },
 /* 116 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"room-container\"><div id=\"info\"><h2>{{room.name}}</h2><span>by {{params.username}}</span></div><div id=\"video\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important; position: static\"><param name=\"flashvars\" value=\"src={{room.rtmp}}&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div><div id=\"chat\">chat</div><div id=\"description\"><h4>房间简介</h4><div id=\"text\">{{room.description}}</div></div></div>";
+	module.exports = {
+	    data: function(){
+	      return {
+	        content: '',
+	        messages: []
+	      }
+	    },
+	    watch: {
+	      messages: function(val,oldVal){
+	        this.$el.childNodes[0].scrollTop = this.$el.childNodes[0].scrollHeight
+	      }
+	    },
+	    methods: {
+	      sendMessage: function(){
+	        // 过滤空格
+	        var space = /\s+/;
+	        this.content = this.content.replace(space, '');
+
+	        if (this.content !== '') {
+	          this.messages.push({
+	            username: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).username : 'Guest',
+	            content: this.content
+	          })
+	          this.content = '';
+	        }
+	      }
+	    },
+	    compiled: function(){
+	      // setInterval(function(){
+	      //   this.messages.push({
+	      //     username: 'randy',
+	      //     content: 'fuck'
+	      //   })
+	      // }.bind(this),500)
+	    }
+	  }
 
 /***/ },
 /* 117 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"chat\"><div v-auto-scroll=\"v-auto-scroll\" class=\"items\"><div v-repeat=\"messages\" class=\"item\"><a href=\"/#/user/{{username}}\" class=\"username\">{{username}}</a><div class=\"content\">{{content}}</div></div></div><div class=\"sender\"><input v-model=\"content\" type=\"text\" placeholder=\"按 Enter 发送\" v-on=\"keyup:sendMessage | key 'enter'\" class=\"u-full-width\"/></div></div>";
+
+/***/ },
+/* 118 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"room-container\"><div id=\"info\"><h2>{{room.name}}</h2><span>by {{params.username}}</span></div><div id=\"video\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important; position: static\"><param name=\"flashvars\" value=\"src={{room.rtmp}}&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div><Chat></Chat><div id=\"description\"><h4>房间简介</h4><div id=\"text\">{{room.description}}</div></div></div>";
+
+/***/ },
+/* 119 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"view\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\">&copy; 2015 OpenSISE Project</div>";

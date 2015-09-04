@@ -6,7 +6,7 @@
     #video
       object(v-attr="data: playerSWF", style="z-index:1 !important; position: static")
         param(name="flashvars", value="src={{room.rtmp}}&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
-    #chat chat
+    Chat
     #description
       h4 房间简介
       #text {{room.description}}
@@ -38,6 +38,9 @@
           app.room.rtmp = res.room.rtmp;
         }
       })
+    },
+    components: {
+      Chat: require('../components/Chat/Chat.vue')
     }
   }
 </script>

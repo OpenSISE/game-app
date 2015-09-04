@@ -670,7 +670,21 @@ input.button-primary {
     width: 360px;
     height: 405px;
     float: right;
+    padding: 12px;
+    box-sizing: border-box;
     background-color: #f2f2f2; }
+    #room-container #chat .items {
+      width: 100%;
+      height: 344.25px;
+      overflow: scroll; }
+      #room-container #chat .items .username {
+        font-weight: bold;
+        color: #31B298; }
+      #room-container #chat .items .content {
+        margin-bottom: 12px; }
+    #room-container #chat .sender {
+      position: relative;
+      bottom: 0; }
   #room-container #description {
     margin-top: 28px; }
     #room-container #description #text {
