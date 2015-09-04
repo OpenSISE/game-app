@@ -1,5 +1,5 @@
 <template lang="jade">
-  #user.form(v-if="signed && params.username===''")
+  #user.form(v-if="signed && !$route.params.username")
     //- 自己的资料
     h4 Hola, {{user.username}} :)
     a.button.u-full-width(href="#/room/{{user.username}}" ) 进入我的房间
@@ -16,7 +16,7 @@
         input#show(type="checkbox", v-model="user.room.show")
         span.label-body 在首页显示房间
       input.button-primary(href="javascript:void(0)", v-on="click: userUpdate()", type="button", value="更新")
-  #user(v-if="!signed || params.username !== ''")
+  #user(v-if="!signed || $route.params.username")
     //- 别人的资料
     p(v-text="user.username")
     p(v-text="user.room.name")
@@ -27,7 +27,6 @@
 
   var User = require('../models').User;
   module.exports = {
-    props: ['params'],
     data: function(){
       return {
         signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
@@ -61,31 +60,30 @@
       }
     },
     compiled: function(){
-      var app = this;
-      if (app.params.username === '') {
+      if (!this.$route.params.username) {
         // 查看自己的资料
-        if (app.signed) {
+        if (this.signed) {
           User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
             if (err) {
               alert(err.message);
             } else {
-              app.user.username = res.username;
-              app.user.room = res.room;
+              this.user.username = res.username;
+              this.user.room = res.room;
             }
-          })
+          }.bind(this))
         } else {
           location.href="/";
         }
       } else {
         // 查看它人资料
-        User.getUserInfo(app.params.username, function(err,res){
+        User.getUserInfo(this.$route.params.username, function(err,res){
           if (err) {
             alert(err.message);
           } else {
-            app.user.username = res.username;
-            app.user.room = res.room;
+            this.user.username = res.username;
+            this.user.room = res.room;
           }
-        })
+        }.bind(this))
       }
     },
     methods: {

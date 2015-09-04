@@ -14541,7 +14541,6 @@ webpackJsonp([0,1],[
 
 	  var User = __webpack_require__(114).User;
 	  module.exports = {
-	    props: ['params'],
 	    data: function(){
 	      return {
 	        signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
@@ -14575,31 +14574,30 @@ webpackJsonp([0,1],[
 	      }
 	    },
 	    compiled: function(){
-	      var app = this;
-	      if (app.params.username === '') {
+	      if (!this.$route.params.username) {
 	        // 查看自己的资料
-	        if (app.signed) {
+	        if (this.signed) {
 	          User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
 	            if (err) {
 	              alert(err.message);
 	            } else {
-	              app.user.username = res.username;
-	              app.user.room = res.room;
+	              this.user.username = res.username;
+	              this.user.room = res.room;
 	            }
-	          })
+	          }.bind(this))
 	        } else {
 	          location.href="/";
 	        }
 	      } else {
 	        // 查看它人资料
-	        User.getUserInfo(app.params.username, function(err,res){
+	        User.getUserInfo(this.$route.params.username, function(err,res){
 	          if (err) {
 	            alert(err.message);
 	          } else {
-	            app.user.username = res.username;
-	            app.user.room = res.room;
+	            this.user.username = res.username;
+	            this.user.room = res.room;
 	          }
-	        })
+	        }.bind(this))
 	      }
 	    },
 	    methods: {
@@ -14625,7 +14623,7 @@ webpackJsonp([0,1],[
 /* 134 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; params.username===''\" class=\"form\"><h4>Hola, {{user.username}} :)</h4><a href=\"#/room/{{user.username}}\" class=\"button u-full-width\">进入我的房间</a><div class=\"row\"><div class=\"six columns\"><label for=\"room-name\">直播名称</label><input id=\"room-name\" v-model=\"user.room.name\" type=\"text\" class=\"u-full-width\"/></div><div class=\"six columns\"><label for=\"games\">直播类别</label><select id=\"games\" v-model=\"user.room.game\" options=\"games\" class=\"u-full-width\"></select></div><label for=\"room-description\">直播简介</label><textarea id=\"room-description\" v-model=\"user.room.description\" class=\"u-full-width\"></textarea><label><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><span class=\"label-body\">在首页显示房间</span></label><input href=\"javascript:void(0)\" v-on=\"click: userUpdate()\" type=\"button\" value=\"更新\" class=\"button-primary\"/></div></div><div id=\"user\" v-if=\"!signed || params.username !== ''\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
+	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; !$route.params.username\" class=\"form\"><h4>Hola, {{user.username}} :)</h4><a href=\"#/room/{{user.username}}\" class=\"button u-full-width\">进入我的房间</a><div class=\"row\"><div class=\"six columns\"><label for=\"room-name\">直播名称</label><input id=\"room-name\" v-model=\"user.room.name\" type=\"text\" class=\"u-full-width\"/></div><div class=\"six columns\"><label for=\"games\">直播类别</label><select id=\"games\" v-model=\"user.room.game\" options=\"games\" class=\"u-full-width\"></select></div><label for=\"room-description\">直播简介</label><textarea id=\"room-description\" v-model=\"user.room.description\" class=\"u-full-width\"></textarea><label><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><span class=\"label-body\">在首页显示房间</span></label><input href=\"javascript:void(0)\" v-on=\"click: userUpdate()\" type=\"button\" value=\"更新\" class=\"button-primary\"/></div></div><div id=\"user\" v-if=\"!signed || $route.params.username\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
 
 /***/ },
 /* 135 */
