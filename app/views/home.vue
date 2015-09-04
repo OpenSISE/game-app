@@ -73,7 +73,7 @@ section#programs(v-repeat="shows", v-show="!loading")
           if (event !== null) {
             this.event.title = event.room.screenTitle;
             this.event.subTitle = event.room.screenSubTitle;
-            this.event.eventUrl = event.room.rtmp;
+            this.event.rtmp = event.room.rtmp;
             this.event.username = event.username;
           } else {
             User.count(function(err,res){
