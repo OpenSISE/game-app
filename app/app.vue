@@ -1,15 +1,15 @@
 <template lang="jade">
   .header
-    a(href="#/home").logo SISE Game
+    a(v-link="/").logo SISE Game
 
     #toolbar(v-if="!signed")
-      a(href="#/signin").item 登录
-      a(href="#/signup").item 注册
+      a(v-link="/signin").item 登录
+      a(v-link="/signup").item 注册
     #toolbar(v-if="signed")
-      a(href="#/user").item {{user.username}}
-      a(href="#/signout").item 退出
-  .view
-    component(is="{{view}}", params="{{params}}", v-transition="fade",transition-mode="out-in")
+      a(v-link="/user").item {{user.username}}
+      a(v-link="/signout").item 退出
+  #view
+    router-view(v-transition="fade",transition-mode="out-in")
 
   .footer &copy; 2015 OpenSISE Project
 </template>
@@ -20,15 +20,16 @@
   require('../static/styles/layout.scss');
 
   module.exports = {
-    el: '#app',
-    data: {
-      view: '',
-      shows: {},
-      signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
-      params: {},
-      user: {
-        userId: '',
-        username: ''
+    data: function(){
+      return {
+        view: '',
+        shows: {},
+        signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
+        params: {},
+        user: {
+          userId: '',
+          username: ''
+        }
       }
     },
     compiled: function(){
