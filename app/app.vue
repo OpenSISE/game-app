@@ -9,7 +9,7 @@
       a(href="#/user").item {{user.username}}
       a(href="#/signout").item 退出
   .view
-    component(is="{{view}}", params="{{params}}", keep-alive, v-transition="fade",transition-mode="out-in")
+    component(is="{{view}}", params="{{params}}", v-transition="fade",transition-mode="out-in")
 
   .footer &copy; 2015 OpenSISE Project
 </template>

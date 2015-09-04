@@ -1,6 +1,6 @@
 <template lang="jade">
   #chat
-    .items(v-auto-scroll)
+    .items
       .item(v-repeat="messages")
         a(href="/#/user/{{username}}").username {{username}}
         .content {{content}}
@@ -10,7 +10,9 @@
 
 <script>
 
+
   module.exports = {
+    props: ['room'],
     data: function(){
       return {
         content: '',
@@ -29,15 +31,37 @@
         this.content = this.content.replace(space, '');
 
         if (this.content !== '') {
-          this.messages.push({
+          var message = {
+            room: this.room,
             username: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).username : 'Guest',
             content: this.content
-          })
+          }
+          socket.emit('chat', message);
+          this.messages.push(message);
           this.content = '';
         }
       }
     },
+    created: function(){
+      console.log('Chat created');
+    },
     compiled: function(){
+      socket.on('connect', function(){
+        console.log(this.room);
+        socket.emit('join', {
+          room: this.room
+        });
+
+        socket.on('chat', function(msg){
+          console.log(msg);
+          this.messages.push(msg);
+        }.bind(this))
+      }.bind(this))
+    },
+    attached: function(){
+
+
+
       // setInterval(function(){
       //   this.messages.push({
       //     username: 'randy',

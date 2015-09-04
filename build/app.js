@@ -12854,6 +12854,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	module.exports = {
+	    props: ['room'],
 	    data: function(){
 	      return {
 	        content: '',
@@ -12872,15 +12873,37 @@ webpackJsonp([0,1],[
 	        this.content = this.content.replace(space, '');
 
 	        if (this.content !== '') {
-	          this.messages.push({
+	          var message = {
+	            room: this.room,
 	            username: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).username : 'Guest',
 	            content: this.content
-	          })
+	          }
+	          socket.emit('chat', message);
+	          this.messages.push(message);
 	          this.content = '';
 	        }
 	      }
 	    },
+	    created: function(){
+	      console.log('Chat created');
+	    },
 	    compiled: function(){
+	      socket.on('connect', function(){
+	        console.log(this.room);
+	        socket.emit('join', {
+	          room: this.room
+	        });
+
+	        socket.on('chat', function(msg){
+	          console.log(msg);
+	          this.messages.push(msg);
+	        }.bind(this))
+	      }.bind(this))
+	    },
+	    attached: function(){
+
+
+
 	      // setInterval(function(){
 	      //   this.messages.push({
 	      //     username: 'randy',
@@ -12894,19 +12917,19 @@ webpackJsonp([0,1],[
 /* 117 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"chat\"><div v-auto-scroll=\"v-auto-scroll\" class=\"items\"><div v-repeat=\"messages\" class=\"item\"><a href=\"/#/user/{{username}}\" class=\"username\">{{username}}</a><div class=\"content\">{{content}}</div></div></div><div class=\"sender\"><input v-model=\"content\" type=\"text\" placeholder=\"按 Enter 发送\" v-on=\"keyup:sendMessage | key 'enter'\" class=\"u-full-width\"/></div></div>";
+	module.exports = "<div id=\"chat\"><div class=\"items\"><div v-repeat=\"messages\" class=\"item\"><a href=\"/#/user/{{username}}\" class=\"username\">{{username}}</a><div class=\"content\">{{content}}</div></div></div><div class=\"sender\"><input v-model=\"content\" type=\"text\" placeholder=\"按 Enter 发送\" v-on=\"keyup:sendMessage | key 'enter'\" class=\"u-full-width\"/></div></div>";
 
 /***/ },
 /* 118 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"room-container\"><div id=\"info\"><h2>{{room.name}}</h2><span>by {{params.username}}</span></div><div id=\"video\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important; position: static\"><param name=\"flashvars\" value=\"src={{room.rtmp}}&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div><Chat></Chat><div id=\"description\"><h4>房间简介</h4><div id=\"text\">{{room.description}}</div></div></div>";
+	module.exports = "<div id=\"room-container\"><div id=\"info\"><h2>{{room.name}}</h2><span>by {{params.username}}</span></div><div id=\"video\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important; position: static\"><param name=\"flashvars\" value=\"src={{room.rtmp}}&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div><Chat room=\"{{params.username}}\"></Chat><div id=\"description\"><h4>房间简介</h4><div id=\"text\">{{room.description}}</div></div></div>";
 
 /***/ },
 /* 119 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"view\"><component is=\"{{view}}\" params=\"{{params}}\" keep-alive=\"keep-alive\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\">&copy; 2015 OpenSISE Project</div>";
+	module.exports = "<div class=\"header\"><a href=\"#/home\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a href=\"#/signin\" class=\"item\">登录</a><a href=\"#/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a href=\"#/user\" class=\"item\">{{user.username}}</a><a href=\"#/signout\" class=\"item\">退出</a></div></div><div class=\"view\"><component is=\"{{view}}\" params=\"{{params}}\" v-transition=\"fade\" transition-mode=\"out-in\"></component></div><div class=\"footer\">&copy; 2015 OpenSISE Project</div>";
 
 /***/ }
 ]);
