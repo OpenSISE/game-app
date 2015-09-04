@@ -29,9 +29,9 @@
           } else {
             localStorage.setItem('token',res.token);
             localStorage.setItem('user', JSON.stringify(res.user));
-            location.href = '/';
+            location.href="/";
           }
-        })
+        }.bind(this));
       }
     }
   }

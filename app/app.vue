@@ -33,6 +33,7 @@
       }
     },
     compiled: function(){
+      console.log('compiled');
       if(this.signed){
         this.user.userId = JSON.parse(localStorage.getItem('user')).id;
         this.user.username = JSON.parse(localStorage.getItem('user')).username;
@@ -41,13 +42,6 @@
     filters: {
       gameName: require('./filters/gameName').gameName,
       gameSubName: require('./filters/gameName').gameSubName
-    },
-    components: {
-      'home-view': require('./views/home.vue'),
-      'signin-view': require('./views/signin.vue'),
-      'signup-view': require('./views/signup.vue'),
-      'user-view': require('./views/user.vue'),
-      'room-view': require('./views/room.vue')
     }
   }
 </script>

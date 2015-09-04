@@ -32,6 +32,20 @@ webpackJsonp([0,1],[
 	  },
 	  '/signup': {
 	    component: __webpack_require__(129)
+	  },
+	  '/signout': {
+	    component: {
+	      created: function(){
+	        if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
+	          localStorage.removeItem('token');
+	          localStorage.removeItem('user');
+	          location.href="/";
+	        } else {
+	          location.href="/";
+
+	        }
+	      }
+	    }
 	  }
 	})
 
@@ -69,13 +83,13 @@ webpackJsonp([0,1],[
 	// })
 	//
 	// router.on('/signout', function(){
-	//   if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
-	//     localStorage.removeItem('token');
-	//     localStorage.removeItem('user');
-	//     location.href = '/';
-	//   } else {
-	//     location.href = '/';
-	//   }
+	  // if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
+	  //   localStorage.removeItem('token');
+	  //   localStorage.removeItem('user');
+	  //   location.href = '/';
+	  // } else {
+	  //   location.href = '/';
+	  // }
 	// })
 	//
 	// router.configure({
@@ -12761,6 +12775,7 @@ webpackJsonp([0,1],[
 	      }
 	    },
 	    compiled: function(){
+	      console.log('compiled');
 	      if(this.signed){
 	        this.user.userId = JSON.parse(localStorage.getItem('user')).id;
 	        this.user.username = JSON.parse(localStorage.getItem('user')).username;
@@ -12769,13 +12784,6 @@ webpackJsonp([0,1],[
 	    filters: {
 	      gameName: __webpack_require__(110).gameName,
 	      gameSubName: __webpack_require__(110).gameSubName
-	    },
-	    components: {
-	      'home-view': __webpack_require__(112),
-	      'signin-view': __webpack_require__(124),
-	      'signup-view': __webpack_require__(129),
-	      'user-view': __webpack_require__(132),
-	      'room-view': __webpack_require__(135)
 	    }
 	  }
 
@@ -12869,7 +12877,6 @@ webpackJsonp([0,1],[
 	        eventUrl: 'rtmp://172.16.162.46:1935/live'
 	      }
 	    },
-
 	    compiled: function(){
 	      Show.getShows(function(err,shows){
 	        if (err) {
@@ -12878,7 +12885,7 @@ webpackJsonp([0,1],[
 	          this.shows = shows;
 	          setTimeout(function(){
 	            this.loading = false
-	          }.bind(this), 3000)
+	          }.bind(this), 1200)
 	        }
 	      }.bind(this));
 	    }
@@ -14449,9 +14456,9 @@ webpackJsonp([0,1],[
 	          } else {
 	            localStorage.setItem('token',res.token);
 	            localStorage.setItem('user', JSON.stringify(res.user));
-	            location.href = '/';
+	            location.href="/";
 	          }
-	        })
+	        }.bind(this));
 	      }
 	    }
 	  }

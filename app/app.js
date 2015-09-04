@@ -28,6 +28,20 @@ router.map({
   },
   '/signup': {
     component: require('./views/signup.vue')
+  },
+  '/signout': {
+    component: {
+      created: function(){
+        if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          location.href="/";
+        } else {
+          location.href="/";
+
+        }
+      }
+    }
   }
 })
 
@@ -65,13 +79,13 @@ router.start(app, '#app');
 // })
 //
 // router.on('/signout', function(){
-//   if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
-//     localStorage.removeItem('token');
-//     localStorage.removeItem('user');
-//     location.href = '/';
-//   } else {
-//     location.href = '/';
-//   }
+  // if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('user');
+  //   location.href = '/';
+  // } else {
+  //   location.href = '/';
+  // }
 // })
 //
 // router.configure({

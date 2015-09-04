@@ -36,7 +36,6 @@
         eventUrl: 'rtmp://172.16.162.46:1935/live'
       }
     },
-
     compiled: function(){
       Show.getShows(function(err,shows){
         if (err) {
@@ -45,7 +44,7 @@
           this.shows = shows;
           setTimeout(function(){
             this.loading = false
-          }.bind(this), 3000)
+          }.bind(this), 1200)
         }
       }.bind(this));
     }
