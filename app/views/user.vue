@@ -1,6 +1,5 @@
 <template lang="jade">
-  #user.form(v-if="signed && !$route.params.username")
-    //- 自己的资料
+  #user.form
     h4 Hola, {{user.username}} :)
     a.button.u-full-width(v-link="/room/{{user.username}}" ) 进入我的房间
     .row
@@ -16,10 +15,6 @@
         input#show(type="checkbox", v-model="user.room.show")
         span.label-body 在首页显示房间
       input.button-primary(href="javascript:void(0)", v-on="click: userUpdate()", type="button", value="更新")
-  #user(v-if="!signed || $route.params.username")
-    //- 别人的资料
-    p(v-text="user.username")
-    p(v-text="user.room.name")
 </template>
 
 <script>
@@ -60,23 +55,8 @@
       }
     },
     compiled: function(){
-      if (!this.$route.params.username) {
-        // 查看自己的资料
-        if (this.signed) {
-          User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
-            if (err) {
-              alert(err.message);
-            } else {
-              this.user.username = res.username;
-              this.user.room = res.room;
-            }
-          }.bind(this))
-        } else {
-          location.href="/";
-        }
-      } else {
-        // 查看它人资料
-        User.getUserInfo(this.$route.params.username, function(err,res){
+      if (this.signed) {
+        User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
           if (err) {
             alert(err.message);
           } else {
@@ -84,6 +64,8 @@
             this.user.room = res.room;
           }
         }.bind(this))
+      } else {
+        location.href="/";
       }
     },
     methods: {

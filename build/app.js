@@ -17,23 +17,23 @@ webpackJsonp([0,1],[
 	});
 
 	router.map({
+	  '*': {
+	    component: __webpack_require__(194)
+	  },
 	  '/': {
-	    component: __webpack_require__(112)
+	    component: __webpack_require__(113)
 	  },
 	  '/room/:username': {
-	    component: __webpack_require__(135)
+	    component: __webpack_require__(125)
 	  },
 	  '/user': {
-	    component: __webpack_require__(132)
-	  },
-	  '/user/:username': {
-	    component: __webpack_require__(132)
+	    component: __webpack_require__(182)
 	  },
 	  '/signin': {
-	    component: __webpack_require__(124)
+	    component: __webpack_require__(187)
 	  },
 	  '/signup': {
-	    component: __webpack_require__(129)
+	    component: __webpack_require__(190)
 	  },
 	  '/signout': {
 	    component: {
@@ -44,7 +44,6 @@ webpackJsonp([0,1],[
 	          location.href="/";
 	        } else {
 	          location.href="/";
-
 	        }
 	      }
 	    }
@@ -56,53 +55,6 @@ webpackJsonp([0,1],[
 	})
 
 	router.start(app, '#app');
-	//
-	// router.on('/home', function(){
-	//   app.view = 'home-view'
-	// })
-	//
-	// router.on('/room/:username', function(username){
-	//   app.view = 'room-view';
-	//   app.params.username = username;
-	// })
-	//
-	// router.on('/user', function(){
-	//   app.view = 'user-view';
-	//   app.params.username = '';
-	// })
-	//
-	// router.on('/user/:username', function(username){
-	//   app.view = 'user-view';
-	//   app.params.username = username;
-	// })
-	//
-	// router.on('/signin', function(){
-	//   app.view = 'signin-view';
-	// })
-	//
-	// router.on('/signup', function(){
-	//   app.view = 'signup-view';
-	// })
-	//
-	// router.on('/signout', function(){
-	  // if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
-	  //   localStorage.removeItem('token');
-	  //   localStorage.removeItem('user');
-	  //   location.href = '/';
-	  // } else {
-	  //   location.href = '/';
-	  // }
-	// })
-	//
-	// router.configure({
-	//   notfound: function(){
-	//     router.setRoute('/home');
-	//   }
-	// })
-	//
-	// router.init('/home');
-	//
-	// module.exports = app;
 
 
 /***/ },
@@ -12752,7 +12704,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(99)
-	module.exports.template = __webpack_require__(141)
+	module.exports.template = __webpack_require__(112)
 
 
 /***/ },
@@ -12857,17 +12809,23 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 112 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__(113)
-	module.exports.template = __webpack_require__(123)
-
+	module.exports = "<div class=\"header\"><a v-link=\"/\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a v-link=\"/signin\" class=\"item\">登录</a><a v-link=\"/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a v-link=\"/user\" class=\"item\">{{user.username}}</a><a v-link=\"/signout\" class=\"item\">退出</a></div></div><div id=\"view\"><router-view v-transition=\"fade\" transition-mode=\"out-in\"></router-view></div><div class=\"footer\">&copy; 2015 OpenSISE Project</div>";
 
 /***/ },
 /* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Show = __webpack_require__(114).Show;
+	module.exports = __webpack_require__(114)
+	module.exports.template = __webpack_require__(124)
+
+
+/***/ },
+/* 114 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Show = __webpack_require__(115).Show;
 	  module.exports = {
 	    data: function(){
 	      return {
@@ -12875,7 +12833,7 @@ webpackJsonp([0,1],[
 	        subTitle: '正在直播：第二届华软杯 - 英雄联盟四强',
 	        shows: {},
 	        loading: true,
-	        playerSWF: __webpack_require__(122),
+	        playerSWF: __webpack_require__(123),
 	        eventUrl: 'rtmp://172.16.162.46:1935/live'
 	      }
 	    },
@@ -12894,18 +12852,18 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Event: __webpack_require__(115),
-	  Show: __webpack_require__(116),
-	  User: __webpack_require__(121)
+	  Event: __webpack_require__(116),
+	  Show: __webpack_require__(117),
+	  User: __webpack_require__(122)
 	}
 
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports) {
 
 	var methods = {
@@ -12922,11 +12880,11 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(117)
-	  , request = __webpack_require__(118)
+	var config = __webpack_require__(118)
+	  , request = __webpack_require__(119)
 	  , END_POINT = config.api.END_POINT
 
 	module.exports = {
@@ -12945,7 +12903,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports) {
 
 	var config = {
@@ -12958,15 +12916,15 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Emitter = __webpack_require__(119);
-	var reduce = __webpack_require__(120);
+	var Emitter = __webpack_require__(120);
+	var reduce = __webpack_require__(121);
 
 	/**
 	 * Root reference for iframes.
@@ -14102,7 +14060,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports) {
 
 	
@@ -14272,7 +14230,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports) {
 
 	
@@ -14301,11 +14259,11 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var config = __webpack_require__(117)
-	  , request = __webpack_require__(118)
+	var config = __webpack_require__(118)
+	  , request = __webpack_require__(119)
 	  , END_POINT = config.api.END_POINT
 
 	module.exports = {
@@ -14417,235 +14375,36 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "6ed6dc1a2f0a5580e3ce3b163ccd6e04.swf"
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\"><div v-text=\"title\" class=\"main\"></div><div v-text=\"subTitle\" class=\"sub\"></div></div><div id=\"live\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><a href=\"#/room/{{ username }}\" class=\"video\"><object v-attr=\"data: playerSWF\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></a><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(125)
-	module.exports.template = __webpack_require__(128)
-
-
-/***/ },
 /* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(126);
+	module.exports = __webpack_require__(126)
+	module.exports.template = __webpack_require__(181)
 
-	  var User = __webpack_require__(114).User;
-	  module.exports = {
-	    data: function(){
-	      return {
-	        username: '',
-	        password: ''
-	      }
-	    },
-	    methods: {
-	      signIn: function(){
-	        User.signIn(this.username, this.password, function(err,res){
-	          if (err) {
-	            alert(err.message);
-	          } else {
-	            localStorage.setItem('token',res.token);
-	            localStorage.setItem('user', JSON.stringify(res.user));
-	            location.href="/";
-	          }
-	        }.bind(this));
-	      }
-	    }
-	  }
 
 /***/ },
 /* 126 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 127 */,
-/* 128 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"signin\" class=\"form\"><h4>登录</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/></div><input type=\"button\" v-on=\"click: signIn()\" value=\"登录\" class=\"u-full-width button-primary\"/></div>";
-
-/***/ },
-/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(130)
-	module.exports.template = __webpack_require__(131)
-
-
-/***/ },
-/* 130 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var User = __webpack_require__(114).User;
-	  module.exports = {
-	    data: function(){
-	      return {
-	        username: '',
-	        password: '',
-	        comfirmPassword: '',
-	        valid: false
-	      }
-	    },
-	    methods: {
-	      signUp: function(){
-	        var app = this;
-	        app.valid = this.username !== '' && this.comfirmPassword !== '' && this.password !== '' && this.comfirmPassword === this.password;
-	        if (app.valid) {
-	          User.signUp(app.username, app.password, function(err,res){
-	            if (err) {
-	              alert(err.message);
-	            } else {
-	              localStorage.setItem('token',res.token);
-	              localStorage.setItem('user', JSON.stringify(res.user));
-	              location.href = '/';
-	            }
-	          })
-	        } else {
-	          alert('填写信息错误')
-	        }
-	      }
-	    }
-	  }
-
-/***/ },
-/* 131 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"signin\" class=\"form\"><h4>加入 SISE Game</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" placeholder=\"用以显示和登录\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/><label for=\"comfirm-password\">确认密码</label><input id=\"comfirm-password\" type=\"password\" v-model=\"comfirmPassword\" class=\"u-full-width\"/><input type=\"button\" href=\"javascript:void(0)\" v-on=\"click: signUp()\" value=\"加入\" class=\"button-primary u-full-width button-primary\"/></div></div>";
-
-/***/ },
-/* 132 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(133)
-	module.exports.template = __webpack_require__(134)
-
-
-/***/ },
-/* 133 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(126);
-
-	  var User = __webpack_require__(114).User;
-	  module.exports = {
-	    data: function(){
-	      return {
-	        signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
-	        user: {
-	          username: '',
-	          room: {
-	            name: '',
-	            description: '',
-	            game: '',
-	            show: false
-	          }
-	        },
-	        games: [
-	          {
-	            text: '英雄联盟',
-	            value: 'lol'
-	          },
-	          {
-	            text: '炉石传说',
-	            value: 'hearthStone'
-	          },
-	          {
-	            text: 'DotA',
-	            value: 'dota'
-	          },
-	          {
-	            text: '其它',
-	            value: 'unset'
-	          }
-	        ]
-	      }
-	    },
-	    compiled: function(){
-	      if (!this.$route.params.username) {
-	        // 查看自己的资料
-	        if (this.signed) {
-	          User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
-	            if (err) {
-	              alert(err.message);
-	            } else {
-	              this.user.username = res.username;
-	              this.user.room = res.room;
-	            }
-	          }.bind(this))
-	        } else {
-	          location.href="/";
-	        }
-	      } else {
-	        // 查看它人资料
-	        User.getUserInfo(this.$route.params.username, function(err,res){
-	          if (err) {
-	            alert(err.message);
-	          } else {
-	            this.user.username = res.username;
-	            this.user.room = res.room;
-	          }
-	        }.bind(this))
-	      }
-	    },
-	    methods: {
-	      userUpdate: function(){
-	        var app = this;
-	        User.update(app.user.username,{
-	          roomName: app.user.room.name,
-	          roomDescription: app.user.room.description,
-	          show: app.user.room.show,
-	          game: app.user.room.game
-	        }, function(err,res){
-	          if (err) {
-	            alert(err.message);
-	          } else {
-	            alert('修改成功');
-	          }
-	        })
-	      }
-	    }
-	  }
-
-/***/ },
-/* 134 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"user\" v-if=\"signed &amp;&amp; !$route.params.username\" class=\"form\"><h4>Hola, {{user.username}} :)</h4><a v-link=\"/room/{{user.username}}\" class=\"button u-full-width\">进入我的房间</a><div class=\"row\"><div class=\"six columns\"><label for=\"room-name\">直播名称</label><input id=\"room-name\" v-model=\"user.room.name\" type=\"text\" class=\"u-full-width\"/></div><div class=\"six columns\"><label for=\"games\">直播类别</label><select id=\"games\" v-model=\"user.room.game\" options=\"games\" class=\"u-full-width\"></select></div><label for=\"room-description\">直播简介</label><textarea id=\"room-description\" v-model=\"user.room.description\" class=\"u-full-width\"></textarea><label><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><span class=\"label-body\">在首页显示房间</span></label><input href=\"javascript:void(0)\" v-on=\"click: userUpdate()\" type=\"button\" value=\"更新\" class=\"button-primary\"/></div></div><div id=\"user\" v-if=\"!signed || $route.params.username\"><p v-text=\"user.username\"></p><p v-text=\"user.room.name\"></p></div>";
-
-/***/ },
-/* 135 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(136)
-	module.exports.template = __webpack_require__(140)
-
-
-/***/ },
-/* 136 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var User = __webpack_require__(114).User;
+	var User = __webpack_require__(115).User;
 
 
 	  module.exports = {
 	    data: function(){
 	      return {
-	        playerSWF: __webpack_require__(122),
+	        playerSWF: __webpack_require__(123),
 	        room: {
 	          name: '',
 	          description: '',
@@ -14670,23 +14429,23 @@ webpackJsonp([0,1],[
 	      }.bind(this))
 	    },
 	    components: {
-	      Chat: __webpack_require__(137)
+	      Chat: __webpack_require__(127)
 	    }
 	  }
 
 /***/ },
-/* 137 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(138)
-	module.exports.template = __webpack_require__(139)
+	module.exports = __webpack_require__(128)
+	module.exports.template = __webpack_require__(180)
 
 
 /***/ },
-/* 138 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var io = __webpack_require__(142);
+	var io = __webpack_require__(129);
 
 	  module.exports = {
 	    props: ['room'],
@@ -14743,33 +14502,15 @@ webpackJsonp([0,1],[
 	  }
 
 /***/ },
-/* 139 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"chat\"><div class=\"items\"><div id=\"status\" v-class=\"success: socketStatus === 1, failed: socketStatus === 2\">实时聊天{{socketStatusMessage[socketStatus]}}</div><div v-repeat=\"messages\" class=\"item\"><div class=\"username\">{{username}}</div><div class=\"content\">{{content}}</div></div></div><div class=\"sender\"><input v-model=\"content\" type=\"text\" placeholder=\"按 Enter 发送\" v-on=\"keyup:sendMessage | key 'enter'\" class=\"u-full-width\"/></div></div>";
-
-/***/ },
-/* 140 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"room-container\"><div id=\"info\"><h2>{{room.name}}</h2><span>by {{$route.params.username}}</span></div><div id=\"video\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important; position: static\"><param name=\"flashvars\" value=\"src={{room.rtmp}}&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div><Chat room=\"{{$route.params.username}}\"></Chat><div id=\"description\"><h4>房间简介</h4><div id=\"text\">{{room.description}}</div></div></div>";
-
-/***/ },
-/* 141 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"header\"><a v-link=\"/\" class=\"logo\">SISE Game</a><div id=\"toolbar\" v-if=\"!signed\"><a v-link=\"/signin\" class=\"item\">登录</a><a v-link=\"/signup\" class=\"item\">注册</a></div><div id=\"toolbar\" v-if=\"signed\"><a v-link=\"/user\" class=\"item\">{{user.username}}</a><a v-link=\"/signout\" class=\"item\">退出</a></div></div><div id=\"view\"><router-view v-transition=\"fade\" transition-mode=\"out-in\"></router-view></div><div class=\"footer\">&copy; 2015 OpenSISE Project</div>";
-
-/***/ },
-/* 142 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(143);
+	module.exports = __webpack_require__(130);
 
 
 /***/ },
-/* 143 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -14777,10 +14518,10 @@ webpackJsonp([0,1],[
 	 * Module dependencies.
 	 */
 
-	var url = __webpack_require__(144);
-	var parser = __webpack_require__(147);
-	var Manager = __webpack_require__(154);
-	var debug = __webpack_require__(146)('socket.io-client');
+	var url = __webpack_require__(131);
+	var parser = __webpack_require__(134);
+	var Manager = __webpack_require__(141);
+	var debug = __webpack_require__(133)('socket.io-client');
 
 	/**
 	 * Module exports.
@@ -14857,12 +14598,12 @@ webpackJsonp([0,1],[
 	 * @api public
 	 */
 
-	exports.Manager = __webpack_require__(154);
-	exports.Socket = __webpack_require__(185);
+	exports.Manager = __webpack_require__(141);
+	exports.Socket = __webpack_require__(172);
 
 
 /***/ },
-/* 144 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -14870,8 +14611,8 @@ webpackJsonp([0,1],[
 	 * Module dependencies.
 	 */
 
-	var parseuri = __webpack_require__(145);
-	var debug = __webpack_require__(146)('socket.io-client:url');
+	var parseuri = __webpack_require__(132);
+	var debug = __webpack_require__(133)('socket.io-client:url');
 
 	/**
 	 * Module exports.
@@ -14942,7 +14683,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 145 */
+/* 132 */
 /***/ function(module, exports) {
 
 	/**
@@ -14973,7 +14714,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 146 */
+/* 133 */
 /***/ function(module, exports) {
 
 	
@@ -15116,7 +14857,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 147 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -15124,12 +14865,12 @@ webpackJsonp([0,1],[
 	 * Module dependencies.
 	 */
 
-	var debug = __webpack_require__(146)('socket.io-parser');
-	var json = __webpack_require__(148);
-	var isArray = __webpack_require__(150);
-	var Emitter = __webpack_require__(151);
-	var binary = __webpack_require__(152);
-	var isBuf = __webpack_require__(153);
+	var debug = __webpack_require__(133)('socket.io-parser');
+	var json = __webpack_require__(135);
+	var isArray = __webpack_require__(137);
+	var Emitter = __webpack_require__(138);
+	var binary = __webpack_require__(139);
+	var isBuf = __webpack_require__(140);
 
 	/**
 	 * Protocol version.
@@ -15522,7 +15263,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 148 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*! JSON v3.2.6 | http://bestiejs.github.io/json3 | Copyright 2012-2013, Kit Cambridge | http://kit.mit-license.org */
@@ -15532,7 +15273,7 @@ webpackJsonp([0,1],[
 
 	  // Detect the `define` function exposed by asynchronous module loaders. The
 	  // strict `define` check is necessary for compatibility with `r.js`.
-	  var isLoader = "function" === "function" && __webpack_require__(149);
+	  var isLoader = "function" === "function" && __webpack_require__(136);
 
 	  // Detect native implementations.
 	  var nativeJSON = typeof JSON == "object" && JSON;
@@ -16389,7 +16130,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 149 */
+/* 136 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -16397,7 +16138,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 150 */
+/* 137 */
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -16406,7 +16147,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 151 */
+/* 138 */
 /***/ function(module, exports) {
 
 	
@@ -16576,7 +16317,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 152 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*global Blob,File*/
@@ -16585,8 +16326,8 @@ webpackJsonp([0,1],[
 	 * Module requirements
 	 */
 
-	var isArray = __webpack_require__(150);
-	var isBuf = __webpack_require__(153);
+	var isArray = __webpack_require__(137);
+	var isBuf = __webpack_require__(140);
 
 	/**
 	 * Replaces every Buffer | ArrayBuffer in packet with a numbered placeholder.
@@ -16724,7 +16465,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 153 */
+/* 140 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -16744,7 +16485,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 154 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -16752,17 +16493,17 @@ webpackJsonp([0,1],[
 	 * Module dependencies.
 	 */
 
-	var url = __webpack_require__(144);
-	var eio = __webpack_require__(155);
-	var Socket = __webpack_require__(185);
-	var Emitter = __webpack_require__(151);
-	var parser = __webpack_require__(147);
-	var on = __webpack_require__(187);
-	var bind = __webpack_require__(188);
-	var object = __webpack_require__(191);
-	var debug = __webpack_require__(146)('socket.io-client:manager');
-	var indexOf = __webpack_require__(182);
-	var Backoff = __webpack_require__(192);
+	var url = __webpack_require__(131);
+	var eio = __webpack_require__(142);
+	var Socket = __webpack_require__(172);
+	var Emitter = __webpack_require__(138);
+	var parser = __webpack_require__(134);
+	var on = __webpack_require__(174);
+	var bind = __webpack_require__(175);
+	var object = __webpack_require__(178);
+	var debug = __webpack_require__(133)('socket.io-client:manager');
+	var indexOf = __webpack_require__(169);
+	var Backoff = __webpack_require__(179);
 
 	/**
 	 * Module exports
@@ -17253,19 +16994,19 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 155 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports =  __webpack_require__(156);
+	module.exports =  __webpack_require__(143);
 
 
 /***/ },
-/* 156 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(157);
+	module.exports = __webpack_require__(144);
 
 	/**
 	 * Exports parser
@@ -17273,25 +17014,25 @@ webpackJsonp([0,1],[
 	 * @api public
 	 *
 	 */
-	module.exports.parser = __webpack_require__(165);
+	module.exports.parser = __webpack_require__(152);
 
 
 /***/ },
-/* 157 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 
-	var transports = __webpack_require__(158);
-	var Emitter = __webpack_require__(151);
-	var debug = __webpack_require__(176)('engine.io-client:socket');
-	var index = __webpack_require__(182);
-	var parser = __webpack_require__(165);
-	var parseuri = __webpack_require__(183);
-	var parsejson = __webpack_require__(184);
-	var parseqs = __webpack_require__(174);
+	var transports = __webpack_require__(145);
+	var Emitter = __webpack_require__(138);
+	var debug = __webpack_require__(163)('engine.io-client:socket');
+	var index = __webpack_require__(169);
+	var parser = __webpack_require__(152);
+	var parseuri = __webpack_require__(170);
+	var parsejson = __webpack_require__(171);
+	var parseqs = __webpack_require__(161);
 
 	/**
 	 * Module exports.
@@ -17406,9 +17147,9 @@ webpackJsonp([0,1],[
 	 */
 
 	Socket.Socket = Socket;
-	Socket.Transport = __webpack_require__(164);
-	Socket.transports = __webpack_require__(158);
-	Socket.parser = __webpack_require__(165);
+	Socket.Transport = __webpack_require__(151);
+	Socket.transports = __webpack_require__(145);
+	Socket.parser = __webpack_require__(152);
 
 	/**
 	 * Creates transport of the given type.
@@ -17989,17 +17730,17 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 158 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies
 	 */
 
-	var XMLHttpRequest = __webpack_require__(159);
-	var XHR = __webpack_require__(162);
-	var JSONP = __webpack_require__(179);
-	var websocket = __webpack_require__(180);
+	var XMLHttpRequest = __webpack_require__(146);
+	var XHR = __webpack_require__(149);
+	var JSONP = __webpack_require__(166);
+	var websocket = __webpack_require__(167);
 
 	/**
 	 * Export transports.
@@ -18049,11 +17790,11 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 159 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// browser shim for xmlhttprequest module
-	var hasCORS = __webpack_require__(160);
+	var hasCORS = __webpack_require__(147);
 
 	module.exports = function(opts) {
 	  var xdomain = opts.xdomain;
@@ -18091,7 +17832,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 160 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -18099,7 +17840,7 @@ webpackJsonp([0,1],[
 	 * Module dependencies.
 	 */
 
-	var global = __webpack_require__(161);
+	var global = __webpack_require__(148);
 
 	/**
 	 * Module exports.
@@ -18120,7 +17861,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 161 */
+/* 148 */
 /***/ function(module, exports) {
 
 	
@@ -18134,18 +17875,18 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 162 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module requirements.
 	 */
 
-	var XMLHttpRequest = __webpack_require__(159);
-	var Polling = __webpack_require__(163);
-	var Emitter = __webpack_require__(151);
-	var inherit = __webpack_require__(175);
-	var debug = __webpack_require__(176)('engine.io-client:polling-xhr');
+	var XMLHttpRequest = __webpack_require__(146);
+	var Polling = __webpack_require__(150);
+	var Emitter = __webpack_require__(138);
+	var inherit = __webpack_require__(162);
+	var debug = __webpack_require__(163)('engine.io-client:polling-xhr');
 
 	/**
 	 * Module exports.
@@ -18525,18 +18266,18 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 163 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Transport = __webpack_require__(164);
-	var parseqs = __webpack_require__(174);
-	var parser = __webpack_require__(165);
-	var inherit = __webpack_require__(175);
-	var debug = __webpack_require__(176)('engine.io-client:polling');
+	var Transport = __webpack_require__(151);
+	var parseqs = __webpack_require__(161);
+	var parser = __webpack_require__(152);
+	var inherit = __webpack_require__(162);
+	var debug = __webpack_require__(163)('engine.io-client:polling');
 
 	/**
 	 * Module exports.
@@ -18549,7 +18290,7 @@ webpackJsonp([0,1],[
 	 */
 
 	var hasXHR2 = (function() {
-	  var XMLHttpRequest = __webpack_require__(159);
+	  var XMLHttpRequest = __webpack_require__(146);
 	  var xhr = new XMLHttpRequest({ xdomain: false });
 	  return null != xhr.responseType;
 	})();
@@ -18776,15 +18517,15 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 164 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var parser = __webpack_require__(165);
-	var Emitter = __webpack_require__(151);
+	var parser = __webpack_require__(152);
+	var Emitter = __webpack_require__(138);
 
 	/**
 	 * Module exports.
@@ -18941,19 +18682,19 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 165 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 
-	var keys = __webpack_require__(166);
-	var hasBinary = __webpack_require__(167);
-	var sliceBuffer = __webpack_require__(169);
-	var base64encoder = __webpack_require__(170);
-	var after = __webpack_require__(171);
-	var utf8 = __webpack_require__(172);
+	var keys = __webpack_require__(153);
+	var hasBinary = __webpack_require__(154);
+	var sliceBuffer = __webpack_require__(156);
+	var base64encoder = __webpack_require__(157);
+	var after = __webpack_require__(158);
+	var utf8 = __webpack_require__(159);
 
 	/**
 	 * Check if we are running an android browser. That requires us to use
@@ -19010,7 +18751,7 @@ webpackJsonp([0,1],[
 	 * Create a blob api even for blob builder when vendor prefixes exist
 	 */
 
-	var Blob = __webpack_require__(173);
+	var Blob = __webpack_require__(160);
 
 	/**
 	 * Encodes a packet.
@@ -19542,7 +19283,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 166 */
+/* 153 */
 /***/ function(module, exports) {
 
 	
@@ -19567,7 +19308,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 167 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -19575,7 +19316,7 @@ webpackJsonp([0,1],[
 	 * Module requirements.
 	 */
 
-	var isArray = __webpack_require__(168);
+	var isArray = __webpack_require__(155);
 
 	/**
 	 * Module exports.
@@ -19632,7 +19373,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 168 */
+/* 155 */
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -19641,7 +19382,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 169 */
+/* 156 */
 /***/ function(module, exports) {
 
 	/**
@@ -19676,7 +19417,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 170 */
+/* 157 */
 /***/ function(module, exports) {
 
 	/*
@@ -19741,7 +19482,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 171 */
+/* 158 */
 /***/ function(module, exports) {
 
 	module.exports = after
@@ -19775,7 +19516,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 172 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! http://mths.be/utf8js v2.0.0 by @mathias */
@@ -20019,7 +19760,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(79)(module), (function() { return this; }())))
 
 /***/ },
-/* 173 */
+/* 160 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -20075,7 +19816,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 174 */
+/* 161 */
 /***/ function(module, exports) {
 
 	/**
@@ -20118,7 +19859,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 175 */
+/* 162 */
 /***/ function(module, exports) {
 
 	
@@ -20130,7 +19871,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 176 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -20140,7 +19881,7 @@ webpackJsonp([0,1],[
 	 * Expose `debug()` as the module.
 	 */
 
-	exports = module.exports = __webpack_require__(177);
+	exports = module.exports = __webpack_require__(164);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -20283,7 +20024,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 177 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -20299,7 +20040,7 @@ webpackJsonp([0,1],[
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(178);
+	exports.humanize = __webpack_require__(165);
 
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -20486,7 +20227,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 178 */
+/* 165 */
 /***/ function(module, exports) {
 
 	/**
@@ -20603,7 +20344,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 179 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -20611,8 +20352,8 @@ webpackJsonp([0,1],[
 	 * Module requirements.
 	 */
 
-	var Polling = __webpack_require__(163);
-	var inherit = __webpack_require__(175);
+	var Polling = __webpack_require__(150);
+	var inherit = __webpack_require__(162);
 
 	/**
 	 * Module exports.
@@ -20843,18 +20584,18 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 180 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Transport = __webpack_require__(164);
-	var parser = __webpack_require__(165);
-	var parseqs = __webpack_require__(174);
-	var inherit = __webpack_require__(175);
-	var debug = __webpack_require__(176)('engine.io-client:websocket');
+	var Transport = __webpack_require__(151);
+	var parser = __webpack_require__(152);
+	var parseqs = __webpack_require__(161);
+	var inherit = __webpack_require__(162);
+	var debug = __webpack_require__(163)('engine.io-client:websocket');
 
 	/**
 	 * `ws` exposes a WebSocket-compatible interface in
@@ -20862,7 +20603,7 @@ webpackJsonp([0,1],[
 	 * in the browser.
 	 */
 
-	var WebSocket = __webpack_require__(181);
+	var WebSocket = __webpack_require__(168);
 
 	/**
 	 * Module exports.
@@ -21087,7 +20828,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 181 */
+/* 168 */
 /***/ function(module, exports) {
 
 	
@@ -21136,7 +20877,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 182 */
+/* 169 */
 /***/ function(module, exports) {
 
 	
@@ -21151,7 +20892,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 183 */
+/* 170 */
 /***/ function(module, exports) {
 
 	/**
@@ -21196,7 +20937,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 184 */
+/* 171 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -21234,7 +20975,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 185 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -21242,13 +20983,13 @@ webpackJsonp([0,1],[
 	 * Module dependencies.
 	 */
 
-	var parser = __webpack_require__(147);
-	var Emitter = __webpack_require__(151);
-	var toArray = __webpack_require__(186);
-	var on = __webpack_require__(187);
-	var bind = __webpack_require__(188);
-	var debug = __webpack_require__(146)('socket.io-client:socket');
-	var hasBin = __webpack_require__(189);
+	var parser = __webpack_require__(134);
+	var Emitter = __webpack_require__(138);
+	var toArray = __webpack_require__(173);
+	var on = __webpack_require__(174);
+	var bind = __webpack_require__(175);
+	var debug = __webpack_require__(133)('socket.io-client:socket');
+	var hasBin = __webpack_require__(176);
 
 	/**
 	 * Module exports.
@@ -21625,7 +21366,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 186 */
+/* 173 */
 /***/ function(module, exports) {
 
 	module.exports = toArray
@@ -21644,7 +21385,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 187 */
+/* 174 */
 /***/ function(module, exports) {
 
 	
@@ -21674,7 +21415,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 188 */
+/* 175 */
 /***/ function(module, exports) {
 
 	/**
@@ -21703,7 +21444,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 189 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -21711,7 +21452,7 @@ webpackJsonp([0,1],[
 	 * Module requirements.
 	 */
 
-	var isArray = __webpack_require__(190);
+	var isArray = __webpack_require__(177);
 
 	/**
 	 * Module exports.
@@ -21768,7 +21509,7 @@ webpackJsonp([0,1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 190 */
+/* 177 */
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -21777,7 +21518,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 191 */
+/* 178 */
 /***/ function(module, exports) {
 
 	
@@ -21866,7 +21607,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 192 */
+/* 179 */
 /***/ function(module, exports) {
 
 	
@@ -21955,6 +21696,218 @@ webpackJsonp([0,1],[
 	};
 
 
+
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"chat\"><div class=\"items\"><div id=\"status\" v-class=\"success: socketStatus === 1, failed: socketStatus === 2\">实时聊天{{socketStatusMessage[socketStatus]}}</div><div v-repeat=\"messages\" class=\"item\"><div class=\"username\">{{username}}</div><div class=\"content\">{{content}}</div></div></div><div class=\"sender\"><input v-model=\"content\" type=\"text\" placeholder=\"按 Enter 发送\" v-on=\"keyup:sendMessage | key 'enter'\" class=\"u-full-width\"/></div></div>";
+
+/***/ },
+/* 181 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"room-container\"><div id=\"info\"><h2>{{room.name}}</h2><span>by {{$route.params.username}}</span></div><div id=\"video\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important; position: static\"><param name=\"flashvars\" value=\"src={{room.rtmp}}&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div><Chat room=\"{{$route.params.username}}\"></Chat><div id=\"description\"><h4>房间简介</h4><div id=\"text\">{{room.description}}</div></div></div>";
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(183)
+	module.exports.template = __webpack_require__(186)
+
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(184);
+
+	  var User = __webpack_require__(115).User;
+	  module.exports = {
+	    data: function(){
+	      return {
+	        signed: localStorage.getItem('token') && localStorage.getItem('token') !== '',
+	        user: {
+	          username: '',
+	          room: {
+	            name: '',
+	            description: '',
+	            game: '',
+	            show: false
+	          }
+	        },
+	        games: [
+	          {
+	            text: '英雄联盟',
+	            value: 'lol'
+	          },
+	          {
+	            text: '炉石传说',
+	            value: 'hearthStone'
+	          },
+	          {
+	            text: 'DotA',
+	            value: 'dota'
+	          },
+	          {
+	            text: '其它',
+	            value: 'unset'
+	          }
+	        ]
+	      }
+	    },
+	    compiled: function(){
+	      if (this.signed) {
+	        User.getUserInfo(JSON.parse(localStorage.getItem('user')).username, function(err,res){
+	          if (err) {
+	            alert(err.message);
+	          } else {
+	            this.user.username = res.username;
+	            this.user.room = res.room;
+	          }
+	        }.bind(this))
+	      } else {
+	        location.href="/";
+	      }
+	    },
+	    methods: {
+	      userUpdate: function(){
+	        var app = this;
+	        User.update(app.user.username,{
+	          roomName: app.user.room.name,
+	          roomDescription: app.user.room.description,
+	          show: app.user.room.show,
+	          game: app.user.room.game
+	        }, function(err,res){
+	          if (err) {
+	            alert(err.message);
+	          } else {
+	            alert('修改成功');
+	          }
+	        })
+	      }
+	    }
+	  }
+
+/***/ },
+/* 184 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 185 */,
+/* 186 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"user\" class=\"form\"><h4>Hola, {{user.username}} :)</h4><a v-link=\"/room/{{user.username}}\" class=\"button u-full-width\">进入我的房间</a><div class=\"row\"><div class=\"six columns\"><label for=\"room-name\">直播名称</label><input id=\"room-name\" v-model=\"user.room.name\" type=\"text\" class=\"u-full-width\"/></div><div class=\"six columns\"><label for=\"games\">直播类别</label><select id=\"games\" v-model=\"user.room.game\" options=\"games\" class=\"u-full-width\"></select></div><label for=\"room-description\">直播简介</label><textarea id=\"room-description\" v-model=\"user.room.description\" class=\"u-full-width\"></textarea><label><input id=\"show\" type=\"checkbox\" v-model=\"user.room.show\"/><span class=\"label-body\">在首页显示房间</span></label><input href=\"javascript:void(0)\" v-on=\"click: userUpdate()\" type=\"button\" value=\"更新\" class=\"button-primary\"/></div></div>";
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(188)
+	module.exports.template = __webpack_require__(189)
+
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(184);
+
+	  var User = __webpack_require__(115).User;
+	  module.exports = {
+	    data: function(){
+	      return {
+	        username: '',
+	        password: ''
+	      }
+	    },
+	    methods: {
+	      signIn: function(){
+	        User.signIn(this.username, this.password, function(err,res){
+	          if (err) {
+	            alert(err.message);
+	          } else {
+	            localStorage.setItem('token',res.token);
+	            localStorage.setItem('user', JSON.stringify(res.user));
+	            location.href="/";
+	          }
+	        }.bind(this));
+	      }
+	    }
+	  }
+
+/***/ },
+/* 189 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"signin\" class=\"form\"><h4>登录</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/></div><input type=\"button\" v-on=\"click: signIn()\" value=\"登录\" class=\"u-full-width button-primary\"/></div>";
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(191)
+	module.exports.template = __webpack_require__(192)
+
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var User = __webpack_require__(115).User;
+	  module.exports = {
+	    data: function(){
+	      return {
+	        username: '',
+	        password: '',
+	        comfirmPassword: '',
+	        valid: false
+	      }
+	    },
+	    methods: {
+	      signUp: function(){
+	        var app = this;
+	        app.valid = this.username !== '' && this.comfirmPassword !== '' && this.password !== '' && this.comfirmPassword === this.password;
+	        if (app.valid) {
+	          User.signUp(app.username, app.password, function(err,res){
+	            if (err) {
+	              alert(err.message);
+	            } else {
+	              localStorage.setItem('token',res.token);
+	              localStorage.setItem('user', JSON.stringify(res.user));
+	              location.href = '/';
+	            }
+	          })
+	        } else {
+	          alert('填写信息错误')
+	        }
+	      }
+	    }
+	  }
+
+/***/ },
+/* 192 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"signin\" class=\"form\"><h4>加入 SISE Game</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" placeholder=\"用以显示和登录\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/><label for=\"comfirm-password\">确认密码</label><input id=\"comfirm-password\" type=\"password\" v-model=\"comfirmPassword\" class=\"u-full-width\"/><input type=\"button\" href=\"javascript:void(0)\" v-on=\"click: signUp()\" value=\"加入\" class=\"button-primary u-full-width button-primary\"/></div></div>";
+
+/***/ },
+/* 193 */,
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports.template = __webpack_require__(195)
+
+
+/***/ },
+/* 195 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"404\">404</div>";
 
 /***/ }
 ]);
