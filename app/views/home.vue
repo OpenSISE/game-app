@@ -1,31 +1,34 @@
 <template lang="jade">
-  #welcome(v-show="loading",v-transition="welcome", transition-mode="out-in")
-    h1 SISE Game
-    h2 让竞技不再孤单
-  section#screen(v-show="!loading")
-    #landing(v-if="event.username")
-      .main(v-text="event.title")
-      .sub
-        a(v-link="/room/{{event.username}}") 正在直播：{{event.subTitle}}
-    #landing(v-if="!event.username")
-      #count
-        span(style="font-size: 2.4em;") {{userCount}} 
-        span 个华软玩家在 SISE Game 分享快乐
-    #live(v-if="event.username")
-      object(v-attr="data: playerSWF", style="z-index:1 !important")
-        param(name="flashvars", value="src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
-  section#programs(v-repeat="shows", v-show="!loading")
-    .program
-      .title
-        .main(v-text="$key | gameName")
-        .sub(v-text="$key | gameSubName")
-      .items.pure-g
-        .pure-u-1-3(v-repeat="$value")
-          .item
-            a(href="#/room/{{ username }}").video
-              object(v-attr="data: playerSWF")
-                param(name="flashvars", value="src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
-            a(href="#/room/{{ username }}", v-text="room.name").name
+#welcome(v-show="loading",v-transition="welcome", transition-mode="out-in")
+  h1 SISE Game
+  h2 让竞技不再孤单
+section#screen(v-show="!loading")
+  #landing(v-if="event.username")
+    .main(v-text="event.title")
+    .sub
+      a(v-link="/room/{{event.username}}") 正在直播：{{event.subTitle}}
+  #landing(v-if="!event.username")
+    #count
+      span(style="font-size: 2.4em;") {{userCount}}
+      span 个华软玩家在 SISE Game 分享快乐
+  #live(v-if="event.username")
+    object(v-attr="data: playerSWF", style="z-index:1 !important")
+      param(name="flashvars", value="src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
+
+#main-message(v-if="showsCount === 0") 当前无直播
+
+section#programs(v-repeat="shows", v-show="!loading")
+  .program
+    .title
+      .main(v-text="$key | gameName")
+      .sub(v-text="$key | gameSubName")
+    .items.pure-g
+      .pure-u-1-3(v-repeat="$value")
+        .item
+          a(href="#/room/{{ username }}").video
+            object(v-attr="data: playerSWF")
+              param(name="flashvars", value="src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
+          a(href="#/room/{{ username }}", v-text="room.name").name
 </template>
 
 <script>
@@ -44,6 +47,11 @@
         shows: {},
         loading: true,
         playerSWF: require("../../static/swfs/StrobeMediaPlayback.swf"),
+      }
+    },
+    computed: {
+      showsCount: function(){
+        return Object.keys(this.shows).length;
       }
     },
     compiled: function(){

@@ -12856,6 +12856,11 @@ webpackJsonp([0,1],[
 	        playerSWF: __webpack_require__(126),
 	      }
 	    },
+	    computed: {
+	      showsCount: function(){
+	        return Object.keys(this.shows).length;
+	      }
+	    },
 	    compiled: function(){
 	      Show.getShows(function(err,shows){
 	        if (err) {
@@ -14455,7 +14460,7 @@ webpackJsonp([0,1],[
 /* 127 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\" v-if=\"event.username\"><div v-text=\"event.title\" class=\"main\"></div><div class=\"sub\"><a v-link=\"/room/{{event.username}}\">正在直播：{{event.subTitle}}</a></div></div><div id=\"landing\" v-if=\"!event.username\"><div id=\"count\"><span style=\"font-size: 2.4em;\">{{userCount}} </span><span>个华软玩家在 SISE Game 分享快乐</span></div></div><div id=\"live\" v-if=\"event.username\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div></section><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><a href=\"#/room/{{ username }}\" class=\"video\"><object v-attr=\"data: playerSWF\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></a><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
+	module.exports = "<div id=\"welcome\" v-show=\"loading\" v-transition=\"welcome\" transition-mode=\"out-in\"><h1>SISE Game</h1><h2>让竞技不再孤单</h2></div><section id=\"screen\" v-show=\"!loading\"><div id=\"landing\" v-if=\"event.username\"><div v-text=\"event.title\" class=\"main\"></div><div class=\"sub\"><a v-link=\"/room/{{event.username}}\">正在直播：{{event.subTitle}}</a></div></div><div id=\"landing\" v-if=\"!event.username\"><div id=\"count\"><span style=\"font-size: 2.4em;\">{{userCount}}</span><span>个华软玩家在 SISE Game 分享快乐</span></div></div><div id=\"live\" v-if=\"event.username\"><object v-attr=\"data: playerSWF\" style=\"z-index:1 !important\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></div></section><div id=\"main-message\" v-if=\"showsCount === 0\">当前无直播</div><section id=\"programs\" v-repeat=\"shows\" v-show=\"!loading\"><div class=\"program\"><div class=\"title\"><div v-text=\"$key | gameName\" class=\"main\"></div><div v-text=\"$key | gameSubName\" class=\"sub\"></div></div><div class=\"items pure-g\"><div v-repeat=\"$value\" class=\"pure-u-1-3\"><div class=\"item\"><a href=\"#/room/{{ username }}\" class=\"video\"><object v-attr=\"data: playerSWF\"><param name=\"flashvars\" value=\"src=rtmp://transfer.kan.games.sina.com.cn/sinagame/U1649937881_1440830226&amp;autoHideControlBar=true&amp;streamType=live&amp;autoPlay=false&amp;verbose=true\"/></object></a><a href=\"#/room/{{ username }}\" v-text=\"room.name\" class=\"name\"></a></div></div></div></div></section>";
 
 /***/ },
 /* 128 */

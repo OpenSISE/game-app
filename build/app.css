@@ -594,6 +594,11 @@ input.button-primary {
     font-size: 1.8em;
     font-weight: normal; }
 
+#main-message {
+  text-align: center;
+  color: #b6b6b6;
+  font-size: 1.8em; }
+
 #screen {
   height: 500px;
   background-image: url(/build/9789f58b171cb70fbfb38392d1f92845.png);
