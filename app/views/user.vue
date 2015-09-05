@@ -9,6 +9,8 @@
       .six.columns
         label(for="games") 直播类别
         select.u-full-width#games(v-model="user.room.game", options="games")
+      label(for="rtmp") RTMP 地址
+      input.u-full-width#rtmp(v-model="user.room.rtmp", type="text")
       label(for="room-description") 直播简介
       textarea.u-full-width#room-description(v-model="user.room.description")
       label
@@ -31,7 +33,8 @@
             name: '',
             description: '',
             game: '',
-            show: false
+            show: false,
+            rtmp: ''
           }
         },
         games: [
@@ -72,10 +75,7 @@
       userUpdate: function(){
         var app = this;
         User.update(app.user.username,{
-          roomName: app.user.room.name,
-          roomDescription: app.user.room.description,
-          show: app.user.room.show,
-          game: app.user.room.game
+          room: this.user.room
         }, function(err,res){
           if (err) {
             alert(err.message);
