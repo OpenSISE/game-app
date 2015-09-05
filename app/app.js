@@ -12,6 +12,10 @@ var router = new VueRouter({
   saveScrollPosition: false
 });
 
+router.afterEach(function(transition){
+  window.scrollTo(0, 0)
+})
+
 router.map({
   '*': {
     component: require('./views/404.vue')
