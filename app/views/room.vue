@@ -1,15 +1,15 @@
 <template lang="jade">
-  #room-container
-    #info
-      h2 {{room.name}}
-      span by {{$route.params.username}}
-    #video
-      object(v-attr="data: playerSWF", style="z-index:1 !important; position: static")
-        param(name="flashvars", value="src={{room.rtmp}}&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
-    Chat(room="{{$route.params.username}}")
-    #description
-      h4 房间简介
-      #text {{room.description}}
+#room-container
+  #info
+    h2 {{room.name}}
+    span by {{$route.params.username}}
+  #video
+    object(v-attr="data: playerSWF", style="z-index:1 !important; position: static")
+      param(name="flashvars", value="src={{room.rtmp}}&autoHideControlBar=true&streamType=live&autoPlay=false&verbose=true")
+  Chat(room="{{$route.params.username}}")
+  #description
+    h4 房间简介
+    #text {{room.description}}
 </template>
 
 <script>

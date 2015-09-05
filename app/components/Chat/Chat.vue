@@ -1,12 +1,12 @@
 <template lang="jade">
-  #chat
-    .items
-      #status(v-class="success: socketStatus === 1, failed: socketStatus === 2") 实时聊天{{socketStatusMessage[socketStatus]}}
-      .item(v-repeat="messages")
-        .username {{username}}
-        .content {{content}}
-    .sender
-      input.u-full-width(v-model="content", type="text", placeholder="按 Enter 发送", v-on="keyup:sendMessage | key 'enter'")
+#chat
+  .items
+    #status(v-class="success: socketStatus === 1, failed: socketStatus === 2") 实时聊天{{socketStatusMessage[socketStatus]}}
+    .item(v-repeat="messages")
+      .username {{username}}
+      .content {{content}}
+  .sender
+    input.u-full-width(v-model="content", type="text", placeholder="按 Enter 发送", v-on="keyup:sendMessage | key 'enter'")
 </template>
 
 <script>

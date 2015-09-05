@@ -1,22 +1,22 @@
 <template lang="jade">
-  #user.form
-    h4 Hola, {{user.username}} :)
-    a.button.u-full-width(v-link="/room/{{user.username}}" ) 进入我的房间
-    .row
-      .six.columns
-        label(for="room-name") 直播名称
-        input.u-full-width#room-name(v-model="user.room.name", type="text")
-      .six.columns
-        label(for="games") 直播类别
-        select.u-full-width#games(v-model="user.room.game", options="games")
-      label(for="rtmp") RTMP 地址
-      input.u-full-width#rtmp(v-model="user.room.rtmp", type="text")
-      label(for="room-description") 直播简介
-      textarea.u-full-width#room-description(v-model="user.room.description")
-      label
-        input#show(type="checkbox", v-model="user.room.show")
-        span.label-body 在首页显示房间
-      input.button-primary(href="javascript:void(0)", v-on="click: userUpdate()", type="button", value="更新")
+#user.form
+  h4 Hola, {{user.username}} :)
+  a.button.u-full-width(v-link="/room/{{user.username}}" ) 进入我的房间
+  .row
+    .six.columns
+      label(for="room-name") 直播名称
+      input.u-full-width#room-name(v-model="user.room.name", type="text")
+    .six.columns
+      label(for="games") 直播类别
+      select.u-full-width#games(v-model="user.room.game", options="games")
+    label(for="rtmp") RTMP 地址
+    input.u-full-width#rtmp(v-model="user.room.rtmp", type="text")
+    label(for="room-description") 直播简介
+    textarea.u-full-width#room-description(v-model="user.room.description")
+    label
+      input#show(type="checkbox", v-model="user.room.show")
+      span.label-body 在首页显示房间
+    input.button-primary(href="javascript:void(0)", v-on="click: userUpdate()", type="button", value="更新")
 </template>
 
 <script>

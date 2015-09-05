@@ -1,13 +1,13 @@
 <template lang="jade">
-  #signin.form
-    //- form
-    h4 登录
-    .row
-      label(for="username") 用户名
-      input.u-full-width#username(type="text", v-model="username")
-      label(for="password") 密码
-      input.u-full-width#password(type="password", v-model="password")
-    input.u-full-width.button-primary(type="button", v-on="click: signIn()", value="登录")
+#signin.form
+  //- form
+  h4 登录
+  .row
+    label(for="username") 用户名
+    input.u-full-width#username(type="text", v-model="username")
+    label(for="password") 密码
+    input.u-full-width#password(type="password", v-model="password")
+  input.u-full-width.button-primary(type="button", v-on="click: signIn()", value="登录")
 </template>
 
 <script>
