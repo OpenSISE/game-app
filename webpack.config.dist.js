@@ -24,12 +24,15 @@ module.exports = {
         loader: 'url?limit=8192'
       },
       { test: /\.vue$/,
-        loader: "vue-loader"
+        loader: 'vue-loader'
       }
     ]
   },
   plugins: [
     new ExtractTextPlugin('app-[hash].css'),
-    assetsPluginInstance
+    assetsPluginInstance,
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: false
+    })
   ]
 }

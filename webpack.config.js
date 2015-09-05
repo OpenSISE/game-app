@@ -20,7 +20,9 @@ module.exports = {
         loader: 'url?limit=8192'
       },
       { test: /\.vue$/,
-        loader: "vue-loader"
+        loader: vue.withLoaders({
+          html: 'html-loader?minimize=false'
+        })
       }
     ]
   },
