@@ -37,24 +37,7 @@
             rtmp: ''
           }
         },
-        games: [
-          {
-            text: '英雄联盟',
-            value: 'lol'
-          },
-          {
-            text: '炉石传说',
-            value: 'hearthStone'
-          },
-          {
-            text: 'DotA',
-            value: 'dota'
-          },
-          {
-            text: '其它',
-            value: 'unset'
-          }
-        ]
+        games: require('../utils/games')
       }
     },
     compiled: function(){
