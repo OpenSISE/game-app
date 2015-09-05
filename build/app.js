@@ -1,4 +1,46 @@
-webpackJsonp([0,1],[
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/build/";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21976,4 +22018,4 @@ webpackJsonp([0,1],[
 	module.exports = "<div id=\"signin\" class=\"form\"><h4>加入 SISE Game</h4><div class=\"row\"><label for=\"username\">用户名</label><input id=\"username\" type=\"text\" placeholder=\"用以显示和登录，5 - 12 个字母或下划线\" v-model=\"username\" class=\"u-full-width\"/><label for=\"password\">密码</label><input id=\"password\" type=\"password\" v-model=\"password\" class=\"u-full-width\"/><label for=\"comfirm-password\">确认密码</label><input id=\"comfirm-password\" type=\"password\" v-model=\"comfirmPassword\" class=\"u-full-width\"/><input type=\"button\" href=\"javascript:void(0)\" v-on=\"click: signUp()\" value=\"加入\" class=\"button-primary u-full-width button-primary\"/></div></div>";
 
 /***/ }
-]);
+/******/ ]);

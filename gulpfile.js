@@ -2,7 +2,8 @@ var gulp = require('gulp')
   , jade = require('gulp-jade')
   , webpack = require('webpack')
   , webpackConfig = require('./webpack.config.js')
-
+  , rimraf = require('rimraf')
+  , assets = require('./webpack-assets.json').main
 
 var paths = {
   view: ['./index.jade']
@@ -14,18 +15,28 @@ gulp.task('default', function(){
 
 gulp.task('jade', function(){
   gulp.src(paths.view)
-    .pipe(jade())
+    .pipe(jade({
+      locals: {
+        JS: '/build/app.js',
+        CSS: '/build/app.css'
+      }
+    }))
     .pipe(gulp.dest('./'))
 })
 
-gulp.task('webpack', function(){
-  webpack(webpackConfig, function(err,stats){
-    if (err) {
-      console.log('Webpack Err:',err)
-    } else {
-      // console.log(stats);
-    }
-  })
+gulp.task('build:jade', function(){
+  gulp.src('./index.jade')
+    .pipe(jade({
+      locals: {
+        JS: assets.js,
+        CSS: assets.css
+      }
+    }))
+    .pipe(gulp.dest('./'))
 })
 
-gulp.task('build', ['jade','webpack']);
+gulp.task('clean', function(){
+  rimraf('./build', function(){
+    
+  });
+})

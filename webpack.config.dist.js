@@ -2,12 +2,16 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
   , webpack = require('webpack')
   , vue = require('vue-loader')
 
+var path                 = require('path');
+var AssetsPlugin         = require('assets-webpack-plugin');
+var assetsPluginInstance = new AssetsPlugin();
+
 module.exports = {
   entry: './app/app.js',
   output: {
     path: './build',
     publicPath: '/build/',
-    filename: 'app.js'
+    filename: 'app-[hash].js'
   },
   module: {
     loaders: [
@@ -25,6 +29,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('app-[hash].css'),
+    assetsPluginInstance
   ]
 }
