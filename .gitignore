@@ -1,3 +1,4 @@
 node_modules
 .DS_Store
 static/bower_components
+app/config.js

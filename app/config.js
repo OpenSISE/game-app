@@ -1,6 +1,6 @@
 var config = {
   api: {
-    END_POINT: 'http://localhost:3000/api'
+    END_POINT: 'http://172.16.104.58:3000/api'
   }
 }
 
