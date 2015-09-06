@@ -48,7 +48,7 @@
     .items{
       width: 100%;
       height: 720px/(320/180) * 0.85;
-      overflow: scroll;
+      overflow: auto;
 
       .username{
         font-weight: bold;
