@@ -11,7 +11,11 @@
   #view
     router-view(v-transition="fade",transition-mode="out-in")
 
-  .footer &copy; 2015 OpenSISE Project
+  .footer
+    p
+      | &copy; 2015
+      a(href="https://github.com/OpenSISE", style="text-decoration: none;")  OpenSISE Project
+    p 由『华软网络管理协会』提供服务器支持
 </template>
 
 <script>

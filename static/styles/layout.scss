@@ -68,6 +68,10 @@ input.button-primary{
   font-size: .9em;
   margin-top: 256px;
   margin-bottom: 12px;
+
+  p {
+    margin-bottom: 12px;
+  }
 }
 
 @import "./index";
