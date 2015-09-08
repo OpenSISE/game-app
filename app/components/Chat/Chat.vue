@@ -41,7 +41,7 @@
             content: this.content
           }
 
-          var socket = io(':3000', {'multiplex': false});
+          var socket = io(':5535', {'multiplex': false});
           socket.emit('chat', message);
           this.content = '';
         }
@@ -49,7 +49,7 @@
     },
     compiled: function(){
       // https://github.com/socketio/socket.io-client/issues/700
-      var socket = io(':3000', {'multiplex': false});
+      var socket = io(':5535', {'multiplex': false});
       socket.on('connect', function(){
         this.socketStatus = 1;
         socket.emit('join', {
