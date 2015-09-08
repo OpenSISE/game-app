@@ -49,8 +49,8 @@
     },
     compiled: function(){
       // https://github.com/socketio/socket.io-client/issues/700
-      console.log('chat compiled');
       var socket = io(':5535', {'multiplex': false});
+
       socket.on('connect', function(){
         this.socketStatus = 1;
         socket.emit('join', {
@@ -64,7 +64,11 @@
 
       socket.on('connect_error', function(){
         this.socketStatus = 2;
-      })
+        socket.disconnect();
+      }.bind(this))
+    },
+    beforeDestroy: function(){
+
     }
   }
 
