@@ -13,7 +13,7 @@ section#screen(v-show="!loading")
       span 个华软玩家在 SISE Game 分享快乐
   #live(v-if="event.username")
     object(v-attr="data: playerSWF", style="z-index:1 !important")
-      param(name="flashvars", value="src={{event.rtmp}}&autoHideControlBar=true&streamType=live&autoPlay=false")
+      param(name="flashvars", value="src={{event.rtmp}}&autoHideControlBar=true&streamType=live&autoPlay=true")
 
 #main-message(v-if="showsCount === 0") 当前无直播
 
@@ -25,10 +25,10 @@ section#programs(v-repeat="shows", v-show="!loading")
     .items.pure-g
       .pure-u-1-3(v-repeat="$value")
         .item
-          a(href="#/room/{{ username }}").video
+          a(v-link="room/{{ username }}").video
             object(v-attr="data: playerSWF")
-              param(name="flashvars", value="src={{ room.rtmp }}&autoHideControlBar=true&streamType=live&autoPlay=false&playButtonOverlay=false")
-          a(href="#/room/{{ username }}", v-text="room.name").name
+              param(name="flashvars", value="src={{ room.rtmp }}&autoHideControlBar=true&streamType=live&autoPlay=true&playButtonOverlay=false&muted=true")
+          a(v-link="room/{{ username }}", v-text="room.name").name
 </template>
 
 <script>

@@ -49,6 +49,7 @@
     },
     compiled: function(){
       // https://github.com/socketio/socket.io-client/issues/700
+      console.log('chat compiled');
       var socket = io(':5535', {'multiplex': false});
       socket.on('connect', function(){
         this.socketStatus = 1;
