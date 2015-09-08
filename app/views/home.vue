@@ -13,6 +13,7 @@ section#screen(v-show="!loading")
       span 个华软玩家在 SISE Game 分享快乐
   #live(v-if="event.username")
     object(v-attr="data: playerSWF", style="z-index:1 !important")
+      param(name="allowfullscreen", value="true")
       param(name="flashvars", value="src={{event.rtmp}}&autoHideControlBar=true&streamType=live&autoPlay=true")
 
 #main-message(v-if="showsCount === 0") 当前无直播
