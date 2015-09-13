@@ -9,7 +9,9 @@ SISE Game 是广州大学华软软件学院校内的（非官方）直播网站�
 ```shell
 $ git clone git@github.com:OpenSISE/game-app.git
 
-$ npm install # 安装依赖
+$ bower install  # 安装依赖
+
+$ npm install
 ```
 
 ```shell
